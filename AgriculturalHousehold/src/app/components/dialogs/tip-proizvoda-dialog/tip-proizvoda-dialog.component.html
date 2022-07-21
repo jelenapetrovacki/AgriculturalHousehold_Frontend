@@ -1,0 +1,37 @@
+<div class="container">
+    <h3 mat-dialog-title *ngIf="flag == 1">Dodavanje tipa proizvoda</h3>
+    <h3 mat-dialog-title *ngIf="flag == 2">Modifikacija tipa proizvoda: {{data.naziv_tipa}}</h3>
+    <form class="mat-dialog-content" #formControl= "ngForm">
+        <div class="form" *ngIf="flag != 3">
+           <mat-form-field>
+               <input matInput placeholder="Naziv tipa proizvoda" [(ngModel)] = "data.naziv_tipa" name="nazivTipa" required>
+           </mat-form-field>     
+        </div>
+        <div class="form" *ngIf="flag != 3">
+            <mat-form-field>
+                <input matInput placeholder="Jedinicna cena" [(ngModel)] = "data.jedinicna_cena" name="jedinicna_cena" required>
+            </mat-form-field>     
+         </div>
+         <div class="form" *ngIf="flag == 3">
+            <br>
+            <br>
+            <p>Potvrdom u okviru ovog dijaloga označićete da tip proizvoda više nije u aktuelnoj ponudi gazdinstva.</p>     
+         </div>
+        <div mat-dialog-actions>
+            <button mat-button *ngIf="flag==1" type="submit" [mat-dialog-close]="1" (click)="add()" [disabled]="!formControl.valid">
+                Sačuvaj
+            </button>
+            <button mat-button *ngIf="flag==2" type="submit" [mat-dialog-close]="1" (click)="update()" [disabled]="!formControl.valid">
+                Sačuvaj
+            </button>
+            <button mat-button *ngIf="flag==3" type="submit" [mat-dialog-close]="1" (click)="delete()">
+                Sačuvaj
+            </button>
+            <button mat-button (click)="cancel()">
+                Poništi
+            </button>
+        </div>
+
+    </form>
+
+</div> 
