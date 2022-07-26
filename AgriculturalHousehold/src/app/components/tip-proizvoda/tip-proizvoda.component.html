@@ -19,13 +19,13 @@
       </ng-container>
       <!-- Naziv -->
       <ng-container matColumnDef="jedinicna_cena">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Jedinična cena</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Jedinična cena (RSD)</mat-header-cell>
         <mat-cell *matCellDef="let row">{{ row.jedinicna_cena }}</mat-cell>
       </ng-container>
       <!-- Adresa -->
       <ng-container matColumnDef="aktuelan">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Aktuelan</mat-header-cell>
-        <mat-cell *matCellDef="let row" [style.color]="row.placeno == true ? 'green' : 'red'">{{ row.aktuelan  ? "Da" : "Ne"  }}</mat-cell>
+        <mat-cell *matCellDef="let row" [style.color]="row.aktuelan== true ? 'green' : 'red'">{{ row.aktuelan  ? "Da" : "Ne"  }}</mat-cell>
       </ng-container>
       
       <!-- Action Buttons -->

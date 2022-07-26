@@ -13,15 +13,20 @@
         </div>
         <div class="form">
             <mat-form-field>
-                <input matInput placeholder="Iznos" [(ngModel)] = "data.iznos" name="iznos" [disabled]= "flag == 3" required>
+                <input matInput placeholder="Iznos" [(ngModel)] = "data.iznos" name="iznos" [disabled]= true required>
             </mat-form-field>     
          </div>
-        <div class="form">
+
+         <div class="form">
             <mat-form-field>
-                <input matInput placeholder="Klijent" [(ngModel)] = "data.klijent.naziv" name="klijent" [disabled]= "flag == 3" required>
-            </mat-form-field>     
-         </div>
-        
+              <mat-select [(ngModel)]="data.klijent" placeholder="Klijent" name="klijent" [compareWith]="compareTo"
+                [disabled]="flag == 3">
+                <mat-option *ngFor="let klijent of klijenti" [value]="klijent">
+                  {{ klijent.naziv }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
         <div mat-dialog-actions>
             <button mat-button *ngIf="flag==1" type="submit" [mat-dialog-close]="1" (click)="add()" [disabled]="!formControl.valid">
                 Sačuvaj
@@ -29,7 +34,7 @@
             <button mat-button *ngIf="flag==2" type="submit" [mat-dialog-close]="1" (click)="update()" [disabled]="!formControl.valid">
                 Sačuvaj
             </button>
-            <button mat-button *ngIf="flag==3" type="submit" [mat-dialog-close]="1" (click)="delete()" [disabled]="!formControl.valid">
+            <button mat-button *ngIf="flag==3" type="submit" [mat-dialog-close]="1" (click)="delete()" >
                 Obriši
             </button>
             <button mat-button (click)="cancel()">

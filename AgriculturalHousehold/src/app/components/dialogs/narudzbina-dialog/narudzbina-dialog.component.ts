@@ -1,7 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Klijent } from 'src/app/models/klijent';
 import { Narudzbina } from 'src/app/models/narudzbina';
+import { KlijentService } from 'src/app/services/klijent.service';
 import { NarudzbinaService } from 'src/app/services/narudzbina.service';
 
 @Component({
@@ -12,15 +14,26 @@ import { NarudzbinaService } from 'src/app/services/narudzbina.service';
 export class NarudzbinaDialogComponent implements OnInit {
 
   public flag!: number;
+  public klijenti!:Klijent[];
 
   constructor(public snackBar: MatSnackBar,
     public dialogRef: MatDialogRef<NarudzbinaDialogComponent>,
     @Inject (MAT_DIALOG_DATA) public data: Narudzbina,
-    public narudzbinaService: NarudzbinaService) { }
+    public narudzbinaService: NarudzbinaService,
+    public klijentService: KlijentService) { }
 
   ngOnInit(): void {
+    this.klijentService.getKlijenti().subscribe(klijentiIzBaze =>
+      {
+        this.klijenti = klijentiIzBaze;
+      });
   }
 
+    
+  compareTo(a:any, b:any) {
+    return a.id == b.id;
+  }
+  
   public add():void {
     this.narudzbinaService.addNarudzbina(this.data).subscribe(() => {
       this.snackBar.open('Uspešno dodata narudžbina', 'OK', {duration:2500})
