@@ -1,7 +1,8 @@
+import { NARUDZBINA_URL } from './../app.constants';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { NARUDZBINA_URL } from '../app.constants';
+
 import { Narudzbina } from '../models/narudzbina';
 
 @Injectable({
@@ -14,6 +15,7 @@ export class NarudzbinaService {
   public getNarudzbine(): Observable<any> {
     return this.httpClient.get(`${NARUDZBINA_URL}`);
   }
+
 
   public addNarudzbina(narudzbina: Narudzbina): Observable<any> {
     narudzbina.id = 350;

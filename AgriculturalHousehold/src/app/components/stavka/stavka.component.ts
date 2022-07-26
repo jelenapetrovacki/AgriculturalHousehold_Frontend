@@ -1,3 +1,5 @@
+import { NarudzbinaService } from 'src/app/services/narudzbina.service';
+import { StavkaPorudzbineDialogComponent } from './../dialogs/stavka-porudzbine-dialog/stavka-porudzbine-dialog.component';
 import { Component, Input, OnChanges, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
@@ -40,12 +42,23 @@ export class StavkaComponent implements OnInit, OnDestroy, OnChanges {
     this.subcription = this.stavkaService.getStavkeZaNarudzbinaID(this.selektovanaNarudzbina.id)
          .subscribe(data => {
            this.dataSource = new MatTableDataSource(data);
+           console.log(data[0]);
          }, (error: Error) => {
            console.log(error.name +' '+ error.message);
          });    
   }
   openDialog(flag: number, id?:number, kolicina?: number, jedinica_mere?: string, obracunata_cena?: number,
      narudzbina?:Narudzbina, tip_proizvoda?: TipProizvoda, faktura?: Faktura) { 
-
+      
+      obracunata_cena = 0;
+      narudzbina = this.selektovanaNarudzbina
+      const dialogRef = this.dialog.open(StavkaPorudzbineDialogComponent, {data: {id,kolicina, jedinica_mere, obracunata_cena, narudzbina, tip_proizvoda, faktura}});
+  
+      dialogRef.componentInstance.flag = flag;
+      dialogRef.afterClosed().subscribe(result => {
+        if(result == 1) {
+          this.loadData();
+        }
+      })
   }
 }

@@ -35,7 +35,7 @@
 
         <ng-container matColumnDef="faktura">
             <mat-header-cell *matHeaderCellDef >Faktura</mat-header-cell>
-            <mat-cell *matCellDef="let row"> {{ row.faktura.id }}</mat-cell>
+            <mat-cell *matCellDef="let row"> {{ row.faktura ? "Fakturisana stavka" : "Nije fakturisana stavka"  }}</mat-cell>
         </ng-container>
        
         <!-- actions -->

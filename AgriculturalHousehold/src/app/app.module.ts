@@ -38,6 +38,7 @@ import { FakturaComponent } from './components/faktura/faktura.component';
 import { FakturaDialogComponent } from './components/dialogs/faktura-dialog/faktura-dialog.component';
 import { UplataDialogComponent } from './components/dialogs/uplata-dialog/uplata-dialog.component';
 import { UplataDodavanjeDialogComponent } from './components/dialogs/uplata-dodavanje-dialog/uplata-dodavanje-dialog.component';
+import { StavkaPorudzbineDialogComponent } from './components/dialogs/stavka-porudzbine-dialog/stavka-porudzbine-dialog.component';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { UplataDodavanjeDialogComponent } from './components/dialogs/uplata-doda
     FakturaComponent,
     FakturaDialogComponent,
     UplataDialogComponent,
-    UplataDodavanjeDialogComponent
+    UplataDodavanjeDialogComponent,
+    StavkaPorudzbineDialogComponent
   ],
   imports: [
     BrowserModule,
