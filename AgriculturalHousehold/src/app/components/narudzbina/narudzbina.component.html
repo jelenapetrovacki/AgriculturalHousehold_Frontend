@@ -45,7 +45,7 @@
           <button mat-button color="primary" (click)="prikaziFakture(row)">
             Prikaži fakture
           </button>
-          <button mat-button color="primary" >
+          <button mat-button color="primary" (click)="prikaziStavkeNarudzbine(row)">
             Prikaži stavke narudžbine
           </button>
           </mat-cell>
@@ -59,11 +59,18 @@
     </mat-table>
     <mat-paginator [length]="100" [pageSize]="5" [pageSizeOptions]="[5,10,25,100]">
     </mat-paginator>
-    <div class="container mat-elevation-z8">
+    <div class="container mat-elevation-z8" *ngIf="faktureIliStavke == 1">
       <app-faktura
       *ngIf="selektovanaNarudzbina"
       [selektovanaNarudzbina]="selektovanaNarudzbina">
 
       </app-faktura>
-  </div>
+    </div>
+   <div class="container mat-elevation-z8" *ngIf="faktureIliStavke == 2">
+     <app-stavka
+     *ngIf="selektovanaNarudzbina"
+      [selektovanaNarudzbina]="selektovanaNarudzbina">
+
+      </app-stavka>
+    </div>
   </div>

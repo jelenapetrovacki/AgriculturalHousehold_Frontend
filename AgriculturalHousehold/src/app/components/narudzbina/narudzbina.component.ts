@@ -20,6 +20,7 @@ export class NarudzbinaComponent implements OnInit {
   dataSource!: MatTableDataSource<NarudzbinaComponent>;
   subscription!: Subscription;
   selektovanaNarudzbina!: Narudzbina;
+  faktureIliStavke = 1;
 
   @ViewChild(MatSort, {static: false}) sort!: MatSort;
   @ViewChild(MatPaginator, {static:false}) paginator!: MatPaginator;
@@ -36,8 +37,14 @@ export class NarudzbinaComponent implements OnInit {
   }
 
   prikaziFakture(row: Narudzbina) {
+    this.faktureIliStavke = 1;
     this.selektovanaNarudzbina = row;
   }
+  prikaziStavkeNarudzbine(row: Narudzbina) {
+    this.faktureIliStavke = 2;
+    this.selektovanaNarudzbina = row;
+  }
+
 
   public loadData() {
     this.subscription = this.narudzbinaService.getNarudzbine().subscribe(data => {
