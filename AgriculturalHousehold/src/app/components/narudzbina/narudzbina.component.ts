@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
 import { Klijent } from 'src/app/models/klijent';
+import { Narudzbina } from 'src/app/models/narudzbina';
 import { NarudzbinaService } from 'src/app/services/narudzbina.service';
 import { NarudzbinaDialogComponent } from '../dialogs/narudzbina-dialog/narudzbina-dialog.component';
 
@@ -18,6 +19,7 @@ export class NarudzbinaComponent implements OnInit {
   displayedColumns = ['id', 'datum', 'iznos', 'klijent', 'actions'];
   dataSource!: MatTableDataSource<NarudzbinaComponent>;
   subscription!: Subscription;
+  selektovanaNarudzbina!: Narudzbina;
 
   @ViewChild(MatSort, {static: false}) sort!: MatSort;
   @ViewChild(MatPaginator, {static:false}) paginator!: MatPaginator;
@@ -31,6 +33,10 @@ export class NarudzbinaComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadData();
+  }
+
+  prikaziFakture(row: Narudzbina) {
+    this.selektovanaNarudzbina = row;
   }
 
   public loadData() {

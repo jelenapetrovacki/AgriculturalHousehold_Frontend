@@ -35,6 +35,9 @@ import { TipProizvodaDialogComponent } from './components/dialogs/tip-proizvoda-
 import { NarudzbinaDialogComponent } from './components/dialogs/narudzbina-dialog/narudzbina-dialog.component';
 import { StavkaComponent } from './components/stavka/stavka.component';
 import { FakturaComponent } from './components/faktura/faktura.component';
+import { FakturaDialogComponent } from './components/dialogs/faktura-dialog/faktura-dialog.component';
+import { UplataDialogComponent } from './components/dialogs/uplata-dialog/uplata-dialog.component';
+import { UplataDodavanjeDialogComponent } from './components/dialogs/uplata-dodavanje-dialog/uplata-dodavanje-dialog.component';
 
 
 @NgModule({
@@ -50,7 +53,10 @@ import { FakturaComponent } from './components/faktura/faktura.component';
     TipProizvodaDialogComponent,
     NarudzbinaDialogComponent,
     StavkaComponent,
-    FakturaComponent
+    FakturaComponent,
+    FakturaDialogComponent,
+    UplataDialogComponent,
+    UplataDodavanjeDialogComponent
   ],
   imports: [
     BrowserModule,

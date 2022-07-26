@@ -1,0 +1,21 @@
+<div *ngIf="uplata">
+
+    <h3>Podaci o izvršenoj uplati:</h3>
+    <p>Šifra uplate: {{uplata.id}}</p>
+    <p>Datum izvršene uplate: {{uplata.datum_uplate | date: "dd.MM.yyyy." }}</p>
+
+
+
+</div>
+
+<div *ngIf="!uplata">
+    <h3>Nema izvršenih uplata za odabranu narudžbinu.</h3>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="zatvori()">
+        Zatvori
+    </button>
+</div>
+
+
+
