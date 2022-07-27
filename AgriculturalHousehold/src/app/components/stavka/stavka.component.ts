@@ -19,7 +19,7 @@ import { MatSort } from '@angular/material/sort';
 })
 export class StavkaComponent implements OnInit, OnDestroy, OnChanges {
 
-  displayedColumns = ['id', 'kolicina', 'jedinica_mere', 'obracunata_cena', 'narudzbina', 'tip_proizvoda', 'faktura', 'actions'];
+  displayedColumns = ['id', 'kolicina', 'obracunata_cena','tip_proizvoda', 'faktura', 'actions'];
   dataSource!: MatTableDataSource<Stavka>;
   subcription!: Subscription;
   @Input() selektovanaNarudzbina!: Narudzbina;

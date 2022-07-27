@@ -5,6 +5,7 @@ export const UPLATA_URL = 'http://localhost:8083/uplata';
 export const TIP_PROIZVODA_URL = 'http://localhost:8083/tip_proizvoda'; 
 export const FAKTURA_URL = 'http://localhost:8083/faktura';
 export const FAKTURE_BY_NARUDZBINAID_URL = 'http://localhost:8083/faktureNarudzbina'; 
+export const FAKTURA_BROJ_UPLATA_URL = 'http://localhost:8083/brojUplata';
 export const NARUDZBINA_URL = 'http://localhost:8083/narudzbina';
 export const STAVKA_URL = 'http://localhost:8083/stavka';
 export const STAVKE_BY_NARUDZBINAID_URL = 'http://localhost:8083/stavkeNarudzbina';

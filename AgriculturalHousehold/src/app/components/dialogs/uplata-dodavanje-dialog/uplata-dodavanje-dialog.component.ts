@@ -13,17 +13,19 @@ import { UplataService } from 'src/app/services/uplata.service';
 })
 export class UplataDodavanjeDialogComponent implements OnInit {
 
-  public uplata!: Uplata;
+  public uplata: Uplata;
   constructor(public snackBar: MatSnackBar, public dialogRef: MatDialogRef<UplataDodavanjeDialogComponent>,
     @Inject (MAT_DIALOG_DATA) public data: Faktura,
-    public uplataService: UplataService) { }
+    public uplataService: UplataService) { 
+      this.uplata = new Uplata();
+    }
 
   ngOnInit(): void {
     
   }
   public add():void {
     this.uplata.datum_uplate = new Date((<HTMLInputElement>document.getElementById("datum_uplate")).value);
-
+    this.uplata.faktura = this.data;
     this.uplataService.addUplata(this.uplata).subscribe(() => {
       this.snackBar.open('Uspešno dodata uplata ' + this.uplata.id, 'OK', {duration:2500})
     },

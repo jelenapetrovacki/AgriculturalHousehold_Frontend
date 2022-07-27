@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { Faktura } from 'src/app/models/faktura';
 import { Narudzbina } from 'src/app/models/narudzbina';
 import { Svrha } from 'src/app/models/svrha';
+import { Uplata } from 'src/app/models/uplata';
 import { FakturaService } from 'src/app/services/faktura.service';
 import { NarudzbinaService } from 'src/app/services/narudzbina.service';
 import { FakturaDialogComponent } from '../dialogs/faktura-dialog/faktura-dialog.component';
@@ -22,10 +23,17 @@ export class FakturaComponent implements OnInit {
   displayedColumns = ['id', 'iznos', 'datum_izdavanja', 'svrha', 'narudzbina', 'actions'];
  dataSource!: MatTableDataSource<Faktura>;
  subcription!: Subscription;
+ subcriptionBrojUplata!: Subscription;
  @Input() selektovanaNarudzbina!: Narudzbina;
+ brojUplata!: number;
+
 
  constructor(private fakturaService: FakturaService,
-   private dialog: MatDialog) { }
+   private dialog: MatDialog ) { }
+
+  ngOnInit(): void {
+    this.loadData();
+  }
 
  ngOnChanges(): void {
    if(this.selektovanaNarudzbina) {
@@ -37,10 +45,18 @@ export class FakturaComponent implements OnInit {
    this.subcription.unsubscribe();
  }
 
- ngOnInit(): void {
-   this.loadData();
- }
+/* brojUplataZaTekuciRed(idFakture: number): boolean {
+ this.subcriptionBrojUplata = this.fakturaService.getBrojUplata(idFakture).subscribe(broj => {this.brojUplata = broj
 
+  });
+  this.subcriptionBrojUplata.unsubscribe();
+     if(this.brojUplata == 1)
+    return true;
+  else 
+    return false;
+
+ }
+*/
  loadData() {
    this.subcription = this.fakturaService.getFaktureZaNarudzbinaID(this.selektovanaNarudzbina.id)
          .subscribe(data => {
@@ -61,8 +77,9 @@ export class FakturaComponent implements OnInit {
  }
 
  dodajUplatu(row: Faktura) {
+  
   const dialogRef = this.dialog.open(UplataDodavanjeDialogComponent, 
-    {data: row});
+    {data:row});
     dialogRef.afterClosed().subscribe(res => {
       if(res === 1) {
         this.loadData();
