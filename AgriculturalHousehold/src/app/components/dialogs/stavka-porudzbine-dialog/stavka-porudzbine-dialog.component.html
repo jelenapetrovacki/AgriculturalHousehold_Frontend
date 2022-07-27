@@ -4,17 +4,17 @@
     <form class="mat-dialog-content" #formControl= "ngForm">
         <div class="form">
            <mat-form-field>
-               <input matInput placeholder="Kolicina" [(ngModel)] = "data.kolicina" name="kolicina" required>
+               <input matInput placeholder="Kolicina" [(ngModel)] = "data.kolicina" name="kolicina"  [disabled]="flag == 3" required>
            </mat-form-field>     
         </div>
         <div class="form">
             <mat-form-field>
-                <input matInput placeholder="JedinicaMere" [(ngModel)] = "data.jedinica_mere" name="jedinica_mere" required>
+                <input matInput placeholder="JedinicaMere" [(ngModel)] = "data.jedinica_mere" name="jedinica_mere"  [disabled]="flag == 3" required>
             </mat-form-field>     
          </div>
          <div class="form">
             <mat-form-field>
-              <mat-select [(ngModel)]="data.tip_proizvoda" placeholder="TipProizvoda" name="tip_proizvoda" [compareWith]="compareTo">
+              <mat-select [(ngModel)]="data.tip_proizvoda" placeholder="TipProizvoda" name="tip_proizvoda"   [disabled]="flag == 3" [compareWith]="compareTo">
                 <mat-option *ngFor="let tip_proizvoda of tipovi_proizvoda" [value]="tip_proizvoda">
                   {{ tip_proizvoda.naziv_tipa }}
                 </mat-option>
@@ -27,6 +27,9 @@
             </button>
             <button mat-button *ngIf="flag==2" type="submit" [mat-dialog-close]="1" (click)="update()" [disabled]="!formControl.valid">
                 Sačuvaj
+            </button>
+            <button mat-button *ngIf="flag==3" type="submit" [mat-dialog-close]="1" (click)="delete()">
+                Obriši
             </button>
             <button mat-button (click)="cancel()">
                 Poništi

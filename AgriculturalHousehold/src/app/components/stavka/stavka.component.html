@@ -1,40 +1,43 @@
 <mat-toolbar class="toolbarNew" color="primary">
-    <span class="title-center">Stavke narudžbine</span>
+    <span class="title-center">Stavke narudžbine <br> Oznaka narudžbine: {{selektovanaNarudzbina.id}}</span>
 </mat-toolbar>
 <div class="container mat-elevation-z8">
+    <mat-form-field>
+        <input matInput placeholder="Pretraga stavki odabrane narudžbine..." (keyup)="applyFilter($event)">
+      </mat-form-field>
         <mat-table #table matSort [dataSource]="dataSource" class="mat-cell" matSort>
         <ng-container matColumnDef="id">
-            <mat-header-cell *matHeaderCellDef >Id</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
             <mat-cell *matCellDef="let row">{{ row.id }}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="kolicina">
-            <mat-header-cell *matHeaderCellDef >Količina</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Količina</mat-header-cell>
             <mat-cell *matCellDef="let row"> {{ row.kolicina }}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="jedinica_mere">
-            <mat-header-cell *matHeaderCellDef >Jedinica mere</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Jedinica mere</mat-header-cell>
             <mat-cell *matCellDef="let row"> {{ row.jedinica_mere }}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="obracunata_cena">
-            <mat-header-cell *matHeaderCellDef >Obračunata cena (RSD)</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Obračunata cena (RSD)</mat-header-cell>
             <mat-cell *matCellDef="let row"> {{ row.obracunata_cena }}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="narudzbina">
-            <mat-header-cell *matHeaderCellDef >Narudžbina</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Narudžbina</mat-header-cell>
             <mat-cell *matCellDef="let row"> {{ row.narudzbina.id }}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="tip_proizvoda">
-            <mat-header-cell *matHeaderCellDef >Tip proizvoda</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Tip proizvoda</mat-header-cell>
             <mat-cell *matCellDef="let row"> {{ row.tip_proizvoda.naziv_tipa }}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="faktura">
-            <mat-header-cell *matHeaderCellDef >Faktura</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Faktura</mat-header-cell>
             <mat-cell *matCellDef="let row"> {{ row.faktura ? "Fakturisana stavka" : "Nije fakturisana stavka"  }}</mat-cell>
         </ng-container>
        

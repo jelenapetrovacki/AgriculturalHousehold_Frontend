@@ -44,24 +44,37 @@ export class StavkaPorudzbineDialogComponent implements OnInit, OnDestroy {
 
   public add():void {
     this.stavkaPorudzbineService.addStavka(this.data).subscribe(() => {
-      this.snackBar.open('Uspešno dodata stavka za izabranu porudžbinu!', 'OK', {duration:2500})
+      this.snackBar.open('Uspešno dodata stavka za izabranu narudžbinu!', 'OK', {duration:2500})
     },
     (error:Error) => {
-      this.snackBar.open('Došlo je do greške prilikom dodavanja stavke za izabranu porudžbinu', 'Zatvori',
+      this.snackBar.open('Došlo je do greške prilikom dodavanja stavke za izabranu narudžbinu', 'Zatvori',
        {duration:2500})
     });
   }
 
   public update():void {
     this.stavkaPorudzbineService.updateStavka(this.data).subscribe(() => {
-      this.snackBar.open('Uspešno izmenjena stavka za izabranu porudžbinu!', 'OK', {duration:2500})
+      this.snackBar.open('Uspešno izmenjena stavka za izabranu narudžbinu!', 'OK', {duration:2500})
     },
     (error:Error) => {
-      this.snackBar.open('Došlo je do greške prilikom izmene stavke za izabranu porudžbinu!', 'Zatvori',
+      this.snackBar.open('Došlo je do greške prilikom izmene stavke za izabranu narudžbinu!', 'Zatvori',
        {duration:2500})
     });
   }
 
+  public delete(): void {
+    this.subscription = this.stavkaPorudzbineService.deleteStavka(this.data.id).subscribe(() => {
+      this.snackBar.open('Uspešno obrisana stavka narudžbine: ' + this.data.id, 'OK', {
+        duration:2500
+      })
+    },
+    (error: Error) => {
+      this.snackBar.open('Došlo je do greške prilikom brisanja postojeće narudžbine!', 'Zatvori', {
+        duration:2500
+      })
+    }
+    );
+  }
   public cancel():void {
     this.dialogRef.close();
     this.snackBar.open('Odustali ste.', 'Zatvori', {duration: 1000});
