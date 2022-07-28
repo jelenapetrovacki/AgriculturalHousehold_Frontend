@@ -1,0 +1,36 @@
+<div>
+
+    <h3>Fakturisane stavke za izabranu fakturu</h3>
+    <p>Šifra fakture: {{stavkeZaFakturu.id}}</p>
+    <p>Datum izdavanja: {{stavkeZaFakturu.datum_izdavanja | date: "dd.MM.yyyy." }}</p>
+
+</div>
+
+<div *ngIf="postojeStavke" class="container mat-elavation-z8">
+    <mat-table #table [dataSource]="dataSource" class="mat-cell">
+      <ng-container matColumnDef="tipProizvoda">
+        <mat-header-cell *matHeaderCellDef>Proizvod</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.tip_proizvoda.naziv_tipa }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="kolicina">
+        <mat-header-cell *matHeaderCellDef>Kolicina i jedinica mere</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.kolicina }} {{ row.jedinica_mere }} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="obracunataCena">
+        <mat-header-cell *matHeaderCellDef>Obracunata cena</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.obracunata_cena }}</mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row
+        style="cursor: pointer;"
+        *matRowDef="let row; columns: displayedColumns">
+      </mat-row>
+    </mat-table>  
+</div>
+
+<div mat-dialog-actions>
+    <button mat-button (click)="zatvori()">
+        Zatvori
+    </button>
+</div>

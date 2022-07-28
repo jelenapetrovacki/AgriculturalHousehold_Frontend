@@ -1,5 +1,5 @@
 <mat-toolbar class="toolbarNew" color="primary">
-    <span class="title-center">Fakture</span>
+    <span class="title-center">Fakture za narudžbinu: {{selektovanaNarudzbina.id}}</span>
 </mat-toolbar>
 <div class="container mat-elevation-z8">
         <mat-table #table matSort [dataSource]="dataSource" class="mat-cell" matSort>
@@ -23,11 +23,6 @@
             <mat-cell *matCellDef="let row"> {{ row.svrha.opis }}</mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="narudzbina">
-            <mat-header-cell *matHeaderCellDef >Narudžbina</mat-header-cell>
-            <mat-cell *matCellDef="let row"> {{ row.narudzbina.id }}</mat-cell>
-        </ng-container>
-
        
         <!-- actions -->
         <ng-container matColumnDef="actions">
@@ -38,22 +33,28 @@
             </mat-header-cell>
 
             <mat-cell *matCellDef="let row; let i = index">
-                <button mat-icon-button color="primary" (click)="openDialog(2, row.id, row.iznos,
-           row.datum_izdavanja, row.svrha, row.narudzbina)">
-                    <mat-icon aria-label="Edit">edit</mat-icon>
+                <button mat-button color="primary" (click)="prikaziFakturisaneStavke(row)">
+                    Prikaži fakturisane stavke
                 </button>
-
-                <button mat-icon-button color="primary" (click)="openDialog(3, row.id, row.iznos,
-           row.datum_izdavanja, row.svrha, row.narudzbina)">
-                    <mat-icon aria-label="Delete">delete</mat-icon>
-                </button>
-
                 <button mat-button color="primary" (click)="prikaziUplatu(row)">
                     Prikaži uplatu
                 </button>
                 <button mat-button color="primary" (click)="dodajUplatu(row)">
                     Dodaj uplatu
                 </button>
+                
+                <!--<button mat-icon-button color="primary" (click)="openDialog(2, row.id, row.iznos,
+           row.datum_izdavanja, row.svrha, row.narudzbina)">
+                    <mat-icon aria-label="Edit">edit</mat-icon>
+                </button>-->
+
+                <button mat-icon-button color="primary" (click)="openDialog(3, row.id, row.iznos,
+           row.datum_izdavanja, row.svrha, row.narudzbina)">
+                    <mat-icon aria-label="Delete">delete</mat-icon>
+                </button>
+
+               
+
             </mat-cell>
         </ng-container>
 

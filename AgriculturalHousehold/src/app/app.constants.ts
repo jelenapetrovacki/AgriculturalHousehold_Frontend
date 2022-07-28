@@ -8,7 +8,9 @@ export const FAKTURE_BY_NARUDZBINAID_URL = 'http://localhost:8083/faktureNarudzb
 export const FAKTURA_BROJ_UPLATA_URL = 'http://localhost:8083/brojUplata';
 export const NARUDZBINA_URL = 'http://localhost:8083/narudzbina';
 export const STAVKA_URL = 'http://localhost:8083/stavka';
+export const STAVKE_URL = 'http://localhost:8083/stavke';
 export const STAVKE_BY_NARUDZBINAID_URL = 'http://localhost:8083/stavkeNarudzbina';
+export const NEFAKT_STAVKE_BY_NARUDZBINAID_URL = 'http://localhost:8083/nefakturisaneStavkeNarudzbina';
 export const STAVKE_BY_FAKTURAID_URL = 'http://localhost:8083/stavkeFaktura';
 
 

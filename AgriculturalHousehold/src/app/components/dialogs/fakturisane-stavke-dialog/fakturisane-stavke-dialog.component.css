@@ -12,8 +12,8 @@
   /* Filter */
   .form {
     background-color: white;
-    min-height: 56px;
-    max-height: 56px;
+    min-height: 100px;
+    max-height: 100px;
     display: flex;
     align-items: center;
     padding: 8px 24px 0;
@@ -36,6 +36,12 @@
     font-size: 14px;
     font-style: italic;
   }
+
+  mat-header-cell, mat-cell {
+    justify-content: center;
+    text-align: center;
+    border: 1px solid #0e0d0c;
+  }
   
   .mat-cell:nth-child(7),
   .mat-header-cell:nth-child(7) {
@@ -46,20 +52,3 @@
     margin: 0 auto;
   }
 
-  .mat-cell:nth-child(1),
-  .mat-header-cell:nth-child(1){
-    flex: 0 0 5%;
-  }
-  .mat-cell:nth-child(2),
-  .mat-header-cell:nth-child(2){
-    flex: 0 0 10%;
-  }
-  .mat-cell:nth-child(3),
-  .mat-header-cell:nth-child(3){
-    flex: 0 0 10%;
-  }
-  .mat-cell:nth-child(4),
-  .mat-header-cell:nth-child(4){
-    flex: 0 0 15%;
-  }
- 

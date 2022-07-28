@@ -1,1 +1,49 @@
-<p>faktura-dialog works!</p>
+<div class="container">
+    <h3 mat-dialog-title *ngIf="flag == 1">Dodavanje fakture</h3>
+    <form class="mat-dialog-content" #formControl="ngForm">
+        <div class="form">
+            <mat-form-field>
+                <mat-select [(ngModel)]="data.svrha" placeholder="Svrha" name="svrha" [disabled]="flag == 3"
+                    [compareWith]="compareTo">
+                    <mat-option *ngFor="let svrha of svrhe" [value]="svrha">
+                        {{ svrha.opis }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="form">
+            <mat-form-field>
+                <input matInput [matDatepicker]="datum_izdavanja" placeholder="Datum izdavanja" name="datum_izdavanja"
+                    id="datum_izdavanja" required [disabled]="flag == 3">
+                <mat-datepicker-toggle matSuffix [for]="datum_izdavanja"></mat-datepicker-toggle>
+                <mat-datepicker #datum_izdavanja></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div *ngIf="!postojeStavke" class="form">
+            <h3>Ne postoje stavke za fakturisanje!</h3>
+        </div>
+        <div *ngIf="postojeStavke" class="form">
+            <h3>Odabrati stavke za fakturisanje:</h3>
+        </div>
+        <div *ngIf="postojeStavke" class="form">           
+            <section  class="chbox-section" >
+                <ul>
+                    <li *ngFor="let stavka of stavke">
+                        <mat-checkbox class="chbox-margin" (click)="dodajStavkeUFakturu(stavka)" >{{stavka.tip_proizvoda.naziv_tipa}} </mat-checkbox>
+                    </li>
+                </ul>         
+            </section>
+        </div>
+        <div mat-dialog-actions>
+            <button mat-button *ngIf="flag==1" type="submit" [mat-dialog-close]="1" (click)="add()"
+                [disabled]="!formControl.valid">
+                Sačuvaj
+            </button>
+            <button mat-button (click)="cancel()">
+                Poništi
+            </button>
+        </div>
+
+    </form>
+
+</div>

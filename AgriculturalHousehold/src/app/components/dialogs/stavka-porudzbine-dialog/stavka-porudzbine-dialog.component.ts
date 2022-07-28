@@ -20,64 +20,64 @@ export class StavkaPorudzbineDialogComponent implements OnInit, OnDestroy {
 
   constructor(public snackBar: MatSnackBar,
     public dialogRef: MatDialogRef<StavkaPorudzbineDialogComponent>,
-    @Inject (MAT_DIALOG_DATA) public data: Stavka,
+    @Inject(MAT_DIALOG_DATA) public data: Stavka,
     public stavkaPorudzbineService: StavkaService,
     public tipProizvodaService: TipProizvodaService) { }
 
-    ngOnDestroy(): void {
-      this.subscription.unsubscribe();
-    }
-  
-    ngOnInit(): void {
-  
-      this.subscription=this.tipProizvodaService.getTipoviProizvoda().subscribe(data => {
-        this.tipovi_proizvoda=data;
-      });
-      (error: Error) => {
-        console.log(error.name+' '+error.message);
-      };
-    }
-
-    compareTo(a: { id: any; },b: { id: any; }){
-      return a.id==b.id;
-    }
-
-  public add():void {
-    this.stavkaPorudzbineService.addStavka(this.data).subscribe(() => {
-      this.snackBar.open('Uspešno dodata stavka za izabranu narudžbinu!', 'OK', {duration:2500})
-    },
-    (error:Error) => {
-      this.snackBar.open('Došlo je do greške prilikom dodavanja stavke za izabranu narudžbinu', 'Zatvori',
-       {duration:2500})
-    });
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
-  public update():void {
-    this.stavkaPorudzbineService.updateStavka(this.data).subscribe(() => {
-      this.snackBar.open('Uspešno izmenjena stavka za izabranu narudžbinu!', 'OK', {duration:2500})
-    },
-    (error:Error) => {
-      this.snackBar.open('Došlo je do greške prilikom izmene stavke za izabranu narudžbinu!', 'Zatvori',
-       {duration:2500})
+  ngOnInit(): void {
+
+    this.subscription = this.tipProizvodaService.getTipoviProizvoda().subscribe(data => {
+      this.tipovi_proizvoda = data;
     });
+    (error: Error) => {
+      console.log(error.name + ' ' + error.message);
+    };
+  }
+
+  compareTo(a: { id: any; }, b: { id: any; }) {
+    return a.id == b.id;
+  }
+
+  public add(): void {
+    this.stavkaPorudzbineService.addStavka(this.data).subscribe(() => {
+      this.snackBar.open('Uspešno dodata stavka za izabranu narudžbinu!', 'OK', { duration: 2500 })
+    },
+      (error: Error) => {
+        this.snackBar.open('Došlo je do greške prilikom dodavanja stavke za izabranu narudžbinu', 'Zatvori',
+          { duration: 2500 })
+      });
+  }
+
+  public update(): void {
+    this.stavkaPorudzbineService.updateStavka(this.data).subscribe(() => {
+      this.snackBar.open('Uspešno izmenjena stavka za izabranu narudžbinu!', 'OK', { duration: 2500 })
+    },
+      (error: Error) => {
+        this.snackBar.open('Došlo je do greške prilikom izmene stavke za izabranu narudžbinu!', 'Zatvori',
+          { duration: 2500 })
+      });
   }
 
   public delete(): void {
     this.subscription = this.stavkaPorudzbineService.deleteStavka(this.data.id).subscribe(() => {
       this.snackBar.open('Uspešno obrisana stavka narudžbine: ' + this.data.id, 'OK', {
-        duration:2500
+        duration: 2500
       })
     },
-    (error: Error) => {
-      this.snackBar.open('Došlo je do greške prilikom brisanja postojeće narudžbine!', 'Zatvori', {
-        duration:2500
-      })
-    }
+      (error: Error) => {
+        this.snackBar.open('Došlo je do greške prilikom brisanja postojeće narudžbine!', 'Zatvori', {
+          duration: 2500
+        })
+      }
     );
   }
-  public cancel():void {
+  public cancel(): void {
     this.dialogRef.close();
-    this.snackBar.open('Odustali ste.', 'Zatvori', {duration: 1000});
+    this.snackBar.open('Odustali ste.', 'Zatvori', { duration: 1000 });
   }
 
 }

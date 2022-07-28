@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -39,6 +40,7 @@ import { FakturaDialogComponent } from './components/dialogs/faktura-dialog/fakt
 import { UplataDialogComponent } from './components/dialogs/uplata-dialog/uplata-dialog.component';
 import { UplataDodavanjeDialogComponent } from './components/dialogs/uplata-dodavanje-dialog/uplata-dodavanje-dialog.component';
 import { StavkaPorudzbineDialogComponent } from './components/dialogs/stavka-porudzbine-dialog/stavka-porudzbine-dialog.component';
+import { FakturisaneStavkeDialogComponent } from './components/dialogs/fakturisane-stavke-dialog/fakturisane-stavke-dialog.component';
 
 
 @NgModule({
@@ -58,7 +60,8 @@ import { StavkaPorudzbineDialogComponent } from './components/dialogs/stavka-por
     FakturaDialogComponent,
     UplataDialogComponent,
     UplataDodavanjeDialogComponent,
-    StavkaPorudzbineDialogComponent
+    StavkaPorudzbineDialogComponent,
+    FakturisaneStavkeDialogComponent
   ],
   imports: [
     BrowserModule,
