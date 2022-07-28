@@ -5,7 +5,7 @@
 
         <div class="form">
             <mat-form-field>
-              <mat-select [(ngModel)]="data.tip_proizvoda" placeholder="TipProizvoda" name="tip_proizvoda"   [disabled]="flag == 3" [compareWith]="compareTo">
+              <mat-select [(ngModel)]="data.tip_proizvoda" placeholder="TipProizvoda" name="tip_proizvoda"   [disabled]="flag != 1" [compareWith]="compareTo">
                 <mat-option *ngFor="let tip_proizvoda of tipovi_proizvoda" [value]="tip_proizvoda">
                   {{ tip_proizvoda.naziv_tipa }}
                 </mat-option>

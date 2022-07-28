@@ -82,12 +82,12 @@ export class FakturaDialogComponent implements OnInit, OnDestroy {
 
   public cancel(): void {
     this.dialogRef.close();
-    if(this.postojeStavke){
+    if (this.postojeStavke) {
       this.snackBar.open('Odustali ste.', 'Zatvori', { duration: 1000 });
-    }else{
+    } else {
       this.snackBar.open('Prvo dodajte stavke u narudžbinu!', 'Zatvori', { duration: 1000 });
     }
-    
+
   }
 
 }

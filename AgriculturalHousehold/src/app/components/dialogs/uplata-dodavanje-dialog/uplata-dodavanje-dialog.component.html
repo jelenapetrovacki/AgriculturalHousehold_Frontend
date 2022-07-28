@@ -15,8 +15,8 @@
 
     <div class="form">
       <mat-form-field>
-        <mat-select [(ngModel)]="nacinUplate" placeholder="NacinUplate" name="nacinUplate" [compareWith]="compareTo">
-          <mat-option *ngFor="let nacinUplate of naciniUplate" [value]="nacinUplate">
+        <mat-select [(ngModel)]="nacinUplate" placeholder="NacinUplate" name="nacinUplate" [compareWith]="compareTo" required>
+          <mat-option *ngFor="let nacinUplate of naciniUplate" [value]="nacinUplate" >
             {{ nacinUplate.nacin_uplate }}
           </mat-option>
         </mat-select>
