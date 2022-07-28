@@ -31,4 +31,8 @@ export class FakturaService {
   public updateFaktura(faktura: Faktura): Observable<any> {
     return this.httpClient.put(`${FAKTURA_URL}`, faktura);
   }
+
+  public deleteFaktura(idFaktura: number): Observable<any> {
+    return this.httpClient.delete(`${FAKTURA_URL}/${idFaktura}`);
+  }
 }

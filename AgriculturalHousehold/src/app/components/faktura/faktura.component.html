@@ -18,12 +18,7 @@
             <mat-cell *matCellDef="let row"> {{ row.datum_izdavanja | date: "dd.MM.yyyy." }}</mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="svrha">
-            <mat-header-cell *matHeaderCellDef >Svrha</mat-header-cell>
-            <mat-cell *matCellDef="let row"> {{ row.svrha.opis }}</mat-cell>
-        </ng-container>
 
-       
         <!-- actions -->
         <ng-container matColumnDef="actions">
             <mat-header-cell *matHeaderCellDef>
@@ -41,14 +36,9 @@
                 </button>
                 <button mat-button color="primary" (click)="dodajUplatu(row)">
                     Dodaj uplatu
-                </button>
-                
-                <!--<button mat-icon-button color="primary" (click)="openDialog(2, row.id, row.iznos,
-           row.datum_izdavanja, row.svrha, row.narudzbina)">
-                    <mat-icon aria-label="Edit">edit</mat-icon>
-                </button>-->
+                </button>           
 
-                <button mat-icon-button color="primary" (click)="openDialog(3, row.id, row.iznos,
+                <button mat-icon-button color="primary" (click)="openDialog(2, row.id, row.iznos,
            row.datum_izdavanja, row.svrha, row.narudzbina)">
                     <mat-icon aria-label="Delete">delete</mat-icon>
                 </button>

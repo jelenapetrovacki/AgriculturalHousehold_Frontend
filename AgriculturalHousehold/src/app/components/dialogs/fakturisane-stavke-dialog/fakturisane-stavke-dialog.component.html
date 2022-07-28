@@ -3,7 +3,9 @@
     <h3>Fakturisane stavke za izabranu fakturu</h3>
     <p>Šifra fakture: {{stavkeZaFakturu.id}}</p>
     <p>Datum izdavanja: {{stavkeZaFakturu.datum_izdavanja | date: "dd.MM.yyyy." }}</p>
-
+    <div  *ngIf="!postojeStavke" class="form">
+      <h3>Ne postoje fakturisane stavke!</h3>
+    </div>
 </div>
 
 <div *ngIf="postojeStavke" class="container mat-elavation-z8">

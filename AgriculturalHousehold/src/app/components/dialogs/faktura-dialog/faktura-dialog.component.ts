@@ -16,10 +16,6 @@ import { Stavka } from 'src/app/models/stavka';
 })
 export class FakturaDialogComponent implements OnInit, OnDestroy {
 
-  public flag!: number;
-
-  public subscription!: Subscription;
-  public svrhe!: Svrha[];
   public subscriptionStavke!: Subscription;
   public stavke: Stavka[];
   public postojeStavke: boolean = true;
@@ -31,22 +27,14 @@ export class FakturaDialogComponent implements OnInit, OnDestroy {
     public dialogRef: MatDialogRef<FakturaDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Faktura,
     public fakturaService: FakturaService,
-    public svrhaService: SvrhaService,
     public stavkaService: StavkaService) { }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
     this.subscriptionStavke.unsubscribe();
   }
 
   ngOnInit(): void {
 
-    this.subscription = this.svrhaService.getSvrhe().subscribe(svrhe => {
-      this.svrhe = svrhe;
-    });
-    (error: Error) => {
-      console.log(error.name + ' ' + error.message);
-    };
 
     this.subscriptionStavke = this.stavkaService.getNefakturisaneStavkeZaNarudzbinaID(this.data.narudzbina.id).subscribe(nefakturisaneStavke => {
       this.stavke = nefakturisaneStavke;
@@ -94,7 +82,12 @@ export class FakturaDialogComponent implements OnInit, OnDestroy {
 
   public cancel(): void {
     this.dialogRef.close();
-    this.snackBar.open('Odustali ste.', 'Zatvori', { duration: 1000 });
+    if(this.postojeStavke){
+      this.snackBar.open('Odustali ste.', 'Zatvori', { duration: 1000 });
+    }else{
+      this.snackBar.open('Prvo dodajte stavke u narudžbinu!', 'Zatvori', { duration: 1000 });
+    }
+    
   }
 
 }

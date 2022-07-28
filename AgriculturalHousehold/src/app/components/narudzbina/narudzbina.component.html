@@ -42,12 +42,13 @@
           <button (click)="openDialog(3, row.id, row.datum, row.iznos, row.klijent)" mat-icon-button color="primary">
             <mat-icon aria-label="Delete">delete</mat-icon>
           </button>
-          <button mat-button color="primary" (click)="prikaziFakture(row)">
-            Prikaži fakture
-          </button>
           <button mat-button color="primary" (click)="prikaziStavkeNarudzbine(row)">
             Prikaži stavke narudžbine
           </button>
+          <button mat-button color="primary" (click)="prikaziFakture(row)">
+            Prikaži fakture
+          </button>
+
           </mat-cell>
 
       </ng-container>

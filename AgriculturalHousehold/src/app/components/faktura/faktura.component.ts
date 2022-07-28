@@ -1,3 +1,5 @@
+import { UplataService } from 'src/app/services/uplata.service';
+import { DeleteFakturaDialogComponent } from './../dialogs/delete-faktura-dialog/delete-faktura-dialog.component';
 import { Component, Input, OnInit, OnDestroy, OnChanges } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
@@ -21,15 +23,15 @@ import { UplataDodavanjeDialogComponent } from '../dialogs/uplata-dodavanje-dial
 })
 export class FakturaComponent implements OnInit, OnDestroy, OnChanges {
 
-  displayedColumns = ['id', 'iznos', 'datum_izdavanja', 'svrha', 'actions'];
+  displayedColumns = ['id', 'iznos', 'datum_izdavanja', 'actions'];
   dataSource!: MatTableDataSource<Faktura>;
   subcription!: Subscription;
   subcriptionBrojUplata!: Subscription;
   @Input() selektovanaNarudzbina!: Narudzbina;
-  brojUplata!: number;
 
 
   constructor(private fakturaService: FakturaService,
+    private uplataService: UplataService,
     private dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -44,22 +46,10 @@ export class FakturaComponent implements OnInit, OnDestroy, OnChanges {
     this.subcription.unsubscribe();
   }
 
-  /* brojUplataZaTekuciRed(idFakture: number): boolean {
-   this.subcriptionBrojUplata = this.fakturaService.getBrojUplata(idFakture).subscribe(broj => {this.brojUplata = broj
-  
-    });
-    this.subcriptionBrojUplata.unsubscribe();
-       if(this.brojUplata == 1)
-      return true;
-    else 
-      return false;
-  
-   }
-  */
   loadData() {
     this.subcription = this.fakturaService.getFaktureZaNarudzbinaID(this.selektovanaNarudzbina.id)
       .subscribe(data => {
-        this.dataSource = new MatTableDataSource(data);
+        this.dataSource = new MatTableDataSource(data);     
       }, (error: Error) => {
         console.log(error.name + ' ' + error.message);
       });
@@ -80,6 +70,7 @@ export class FakturaComponent implements OnInit, OnDestroy, OnChanges {
 
     const dialogRef = this.dialog.open(UplataDodavanjeDialogComponent,
       { data: row });
+    dialogRef.componentInstance.selektovanaFakturaID = row.id;
     dialogRef.afterClosed().subscribe(res => {
       if (res === 1) {
         this.loadData();
@@ -100,18 +91,30 @@ export class FakturaComponent implements OnInit, OnDestroy, OnChanges {
 
   openDialog(flag: number, id?: number, iznos?: number, datum_izdavanja?: Date, svrha?: Svrha, narudzbina?: Narudzbina) {
 
-    const dialogRef = this.dialog.open(FakturaDialogComponent,
-      { data: { id, iznos, datum_izdavanja, svrha, narudzbina } });
-
-    dialogRef.componentInstance.flag = flag;
     if (flag === 1) {
+      const dialogRef = this.dialog.open(FakturaDialogComponent,
+        { data: { id, iznos, datum_izdavanja, narudzbina } });
+
       dialogRef.componentInstance.data.narudzbina = this.selektovanaNarudzbina;
+
+      dialogRef.afterClosed().subscribe(res => {
+        if (res === 1) {
+          this.loadData();
+        }
+      });
+    } else if (flag==2){
+      const dialogRef = this.dialog.open(DeleteFakturaDialogComponent,
+        { data: { id, iznos, datum_izdavanja, svrha, narudzbina } });
+
+      dialogRef.componentInstance.faktura.narudzbina = this.selektovanaNarudzbina;
+
+      dialogRef.afterClosed().subscribe(res => {
+        if (res === 1) {
+          this.loadData();
+        }
+      });
     }
-    dialogRef.afterClosed().subscribe(res => {
-      if (res === 1) {
-        this.loadData();
-      }
-    });
+
 
   }
 }

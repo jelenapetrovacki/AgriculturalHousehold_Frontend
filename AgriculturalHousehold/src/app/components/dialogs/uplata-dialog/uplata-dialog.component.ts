@@ -12,14 +12,20 @@ export class UplataDialogComponent implements OnInit {
 
   public selektovanaFakturaID!: number;
   public uplata!: Uplata;
+  public nacinUplate!: string;
   constructor(public uplataService: UplataService, public dialogRef: MatDialogRef<UplataDialogComponent>) { }
 
   ngOnInit(): void {
-    this.uplataService.getUplataZaFakturaID(this.selektovanaFakturaID).subscribe(uplata => 
-      this.uplata = uplata);
+    this.uplataService.getUplataZaFakturaID(this.selektovanaFakturaID).subscribe(uplata => {
+      this.uplata=uplata;
+      if(this.uplata != null){
+        this.nacinUplate = uplata.nacin_uplate.nacinUplate;
+      }
+
+    });
   }
 
-  public zatvori():void {
+  public zatvori(): void {
     this.dialogRef.close();
   }
 

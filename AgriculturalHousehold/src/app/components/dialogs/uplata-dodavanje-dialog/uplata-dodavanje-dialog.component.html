@@ -1,28 +1,44 @@
-<div class="container">
-    <h3 mat-dialog-title>Dodavanje uplate</h3>
-    
-    <form class="mat-dialog-content" #formControl= "ngForm">
+<div *ngIf="!postojiUplata" class="container">
+  <h3 mat-dialog-title>Dodavanje uplate</h3>
 
-        <div class="form">
-            <mat-form-field>
-                <input matInput [matDatepicker]="datum_uplate" placeholder="Datum uplate" 
-                name="datum_uplate" id="datum_uplate" required>
-                <mat-datepicker-toggle matSuffix [for]="datum_uplate"></mat-datepicker-toggle>
-                <mat-datepicker #datum_uplate></mat-datepicker>
-            
-             </mat-form-field>     
-         </div>
+  <form class="mat-dialog-content" #formControl="ngForm">
 
-        <div mat-dialog-actions>
-            <button mat-button type="submit" [mat-dialog-close]="1" (click)="add()" [disabled]="!formControl.valid">
-                Sačuvaj
-            </button>
+    <div class="form">
+      <mat-form-field>
+        <input matInput [matDatepicker]="datum_uplate" placeholder="Datum uplate" name="datum_uplate" id="datum_uplate"
+          required>
+        <mat-datepicker-toggle matSuffix [for]="datum_uplate"></mat-datepicker-toggle>
+        <mat-datepicker #datum_uplate></mat-datepicker>
 
-            <button mat-button (click)="cancel()">
-                Poništi
-            </button>
-        </div>
+      </mat-form-field>
+    </div>
 
-    </form>
+    <div class="form">
+      <mat-form-field>
+        <mat-select [(ngModel)]="nacinUplate" placeholder="NacinUplate" name="nacinUplate" [compareWith]="compareTo">
+          <mat-option *ngFor="let nacinUplate of naciniUplate" [value]="nacinUplate">
+            {{ nacinUplate.nacin_uplate }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
 
-</div> 
+    <div mat-dialog-actions>
+      <button mat-button type="submit" [mat-dialog-close]="1" (click)="add()" [disabled]="!formControl.valid">
+        Sačuvaj
+      </button>
+
+      <button mat-button (click)="cancel()">
+        Poništi
+      </button>
+    </div>
+
+  </form>
+
+</div>
+<div *ngIf="postojiUplata" class="container">
+  <h3>Uplata već postoji te se ne može dodati!</h3>
+  <button mat-button (click)="cancel()">
+    Poništi
+  </button>
+</div>
