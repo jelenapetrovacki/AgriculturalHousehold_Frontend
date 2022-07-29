@@ -1,0 +1,7 @@
+#wrapper {
+    width: 500px;
+}
+#buttonPosition {
+    position: relative;
+    left: 400px;
+}

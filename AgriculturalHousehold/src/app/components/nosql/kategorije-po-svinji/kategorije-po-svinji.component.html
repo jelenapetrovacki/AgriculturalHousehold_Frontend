@@ -1,0 +1,35 @@
+<div id="wrapper">
+    <h3>Arhiva kategorija svinje</h3>
+    <h4>Tetovir broj svinje: <strong>{{selektovanaSvinja.tetovir_broj_svinje}}</strong></h4>
+    <br>
+    
+   <mat-table #table [dataSource]="dataSource" class="mat-cell">
+    <ng-container matColumnDef="datum_od">
+      <mat-header-cell *matHeaderCellDef >Datum od</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.datum_od | date: "dd.MM.yyyy."}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="datum_do">
+        <mat-header-cell *matHeaderCellDef >Datum do</mat-header-cell>
+        <mat-cell *matCellDef="let row" [style.color]="row.datum_do ? 'black' : 'green'">
+            {{ row.datum_do ? (row.datum_do | date: "dd.MM.yyyy.") : "Aktuelna" }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="naziv_kategorije">
+        <mat-header-cell *matHeaderCellDef >Naziv kategorije</mat-header-cell>
+        <mat-cell *matCellDef="let row"><strong>{{ row.naziv_kategorije }}</strong></mat-cell>
+      </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row
+      style="cursor: pointer;"
+      *matRowDef="let row; columns: displayedColumns">
+   </mat-row>  
+  </mat-table>
+</div>
+
+<div mat-dialog-actions>
+    <button id="buttonPosition" mat-button (click)="zatvori()">
+        Zatvori
+    </button>
+</div>

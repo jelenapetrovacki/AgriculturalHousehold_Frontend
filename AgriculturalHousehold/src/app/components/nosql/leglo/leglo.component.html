@@ -1,0 +1,50 @@
+<div id="wrapper">
+    <div id="first">
+        <h3>Podaci o leglu svinja:</h3>
+        <p><strong>Oznaka legla:</strong> {{leglo.oznaka_legla}}</p>
+        <p><strong>Datum prasenja:</strong> {{leglo.datum_prasenja | date: "dd.MM.yyyy." }} </p>
+        <p><strong>Datum osemenjavanja:</strong> {{leglo.datum_osemenjavanja | date: "dd.MM.yyyy." }}</p>
+        <p><strong>Tip osemenjavanja:</strong> {{leglo.tip_osemenjavanja}} </p>
+        <p><strong>Anomalije:</strong></p>
+        <ul>
+            <li *ngFor="let anomalija of leglo.anomalije">{{anomalija}}</li>
+        </ul>
+        <p><strong>Broj rođenih živih:</strong> {{leglo.broj_zivih}} </p>
+        <p><strong>Broj rođenih uginulih:</strong> {{leglo.broj_uginulih}} </p>
+        
+    </div>
+    
+    <div id="second">
+        <br>
+        <br>
+        <h4>Krmača</h4>
+        <p><strong>Tetovir broj:</strong> {{ leglo.majka.tetovir_broj_svinje }} </p>
+        <p><strong>Veterinarski broj:</strong> {{ leglo.majka.aktuelni_veterinarski_broj }} </p>
+        <p><strong>Rasa:</strong> {{ leglo.majka.rasa }} </p>
+        <p><strong>Kategorija:</strong> {{ leglo.majka.kategorija }} </p>
+        <p><strong>Oznaka legla:</strong> {{ leglo.majka.oznaka_legla }} </p>
+        <p><strong>Naziv gazdinstva:</strong> {{ leglo.majka.naziv_gazdinstva }} </p>
+    </div>
+
+    <div id="third">
+        <br>
+        <br>
+        <h4>Nerast</h4>
+        <p><strong>Tetovir broj:</strong> {{ leglo.otac.tetovir_broj_svinje }} </p>
+        <p><strong>Veterinarski broj:</strong> {{ leglo.otac.aktuelni_veterinarski_broj }} </p>
+        <p><strong>Rasa:</strong> {{ leglo.otac.rasa }} </p>
+        <p><strong>Kategorija:</strong> {{ leglo.otac.kategorija }} </p>
+        <p><strong>Oznaka legla:</strong> {{ leglo.otac.oznaka_legla }} </p>
+        <p><strong>Naziv gazdinstva:</strong> {{ leglo.otac.naziv_gazdinstva }} </p>
+    </div>
+</div>
+
+
+<div mat-dialog-actions>
+    <button id="buttonPosition" mat-button (click)="zatvori()">
+        Zatvori
+    </button>
+</div>
+
+
+

@@ -1,0 +1,35 @@
+<mat-toolbar color="primary">
+    <span class="title-center">Rasa {{selektovanaRasa}}</span>
+  </mat-toolbar>
+  
+  <div class="container mat-elavation-z8">
+
+  <!--  <mat-table #table [dataSource]="dataSource" class="mat-cell" >
+      <ng-container matColumnDef="oznaka_rase">
+        <mat-header-cell *matHeaderCellDef>Oznaka rase</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.oznaka_rase }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="tetovir_broj_svinje">
+        <mat-header-cell *matHeaderCellDef>Tetovir broj</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.tetovir_broj_svinje }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="naziv_rase">
+        <mat-header-cell *matHeaderCellDef>Rasa</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.naziv_rase }}</mat-cell>
+      </ng-container>
+              
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row
+        style="cursor: pointer;"
+        *matRowDef="let row; columns: displayedColumns">
+     </mat-row>  
+    </mat-table>
+-->
+  <h3>Rasi {{selektovanaRasa}} pripadaju svinje sa sledećim tetovir brojevima: </h3>
+    <mat-list>
+      
+      <mat-list-item *ngFor="let svinja of svinjePoRasi"> {{svinja.tetovir_broj_svinje}} </mat-list-item>
+    </mat-list>
+  </div>

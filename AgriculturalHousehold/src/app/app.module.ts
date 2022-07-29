@@ -42,6 +42,13 @@ import { UplataDodavanjeDialogComponent } from './components/dialogs/uplata-doda
 import { StavkaPorudzbineDialogComponent } from './components/dialogs/stavka-porudzbine-dialog/stavka-porudzbine-dialog.component';
 import { FakturisaneStavkeDialogComponent } from './components/dialogs/fakturisane-stavke-dialog/fakturisane-stavke-dialog.component';
 import { DeleteFakturaDialogComponent } from './components/dialogs/delete-faktura-dialog/delete-faktura-dialog.component';
+import { SvinjaComponent } from './components/nosql/svinja/svinja.component';
+import { TerapijePoDanuComponent } from './components/nosql/terapije-po-danu/terapije-po-danu.component';
+import { SvinjePoRasiComponent } from './components/nosql/svinje-po-rasi/svinje-po-rasi.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { LegloComponent } from './components/nosql/leglo/leglo.component';
+import { ArhivaVeterinarskogBrojaComponent } from './components/nosql/arhiva-veterinarskog-broja/arhiva-veterinarskog-broja.component';
+import { KategorijePoSvinjiComponent } from './components/nosql/kategorije-po-svinji/kategorije-po-svinji.component';
 
 
 @NgModule({
@@ -63,7 +70,13 @@ import { DeleteFakturaDialogComponent } from './components/dialogs/delete-faktur
     UplataDodavanjeDialogComponent,
     StavkaPorudzbineDialogComponent,
     FakturisaneStavkeDialogComponent,
-    DeleteFakturaDialogComponent
+    DeleteFakturaDialogComponent,
+    SvinjaComponent,
+    TerapijePoDanuComponent,
+    SvinjePoRasiComponent,
+    LegloComponent,
+    ArhivaVeterinarskogBrojaComponent,
+    KategorijePoSvinjiComponent
   ],
   imports: [
     BrowserModule,
@@ -88,7 +101,9 @@ import { DeleteFakturaDialogComponent } from './components/dialogs/delete-faktur
     MatSelectModule,
     MatNativeDateModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule, 
+    MatTooltipModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -14,6 +14,11 @@ export const NEFAKT_STAVKE_BY_NARUDZBINAID_URL = 'http://localhost:8083/nefaktur
 export const STAVKE_BY_FAKTURAID_URL = 'http://localhost:8083/stavkeFaktura';
 
 
+export const SVINJA_URL = 'http://localhost:8083/svinje'; 
+export const SVINJE_PO_RASI_URL = 'http://localhost:8083/rasa'; 
+export const LEGLO_URL = 'http://localhost:8083/leglo'; 
+export const ARH_VET_BROJA_URL = 'http://localhost:8083/arhivaVeterinarskogBroja'; 
+export const ARH_KATEGORIJA_URL = 'http://localhost:8083/arhivaKategorija'; 
 
 
 

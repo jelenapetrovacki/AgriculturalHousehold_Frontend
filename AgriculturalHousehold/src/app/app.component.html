@@ -3,7 +3,7 @@
       <mat-accordion>
           <a mat-button style="text-align: center">
               <mat-icon [routerLink]="['/pocetna']" >
-                  Home
+                  home
               </mat-icon>
           </a>
           <mat-expansion-panel>
@@ -24,6 +24,19 @@
               <mat-nav-list>
                   <a mat-button [routerLink]="['/narudzbina']">Narudzbine</a>
               </mat-nav-list>
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Evidencije
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-nav-list>
+                <a mat-button [routerLink]="['/svinje']">Karton svinja</a>
+            </mat-nav-list>
+            <mat-nav-list>
+                <a mat-button [routerLink]="['/danasnjeTerapije']">Terapije za današnji dan</a>
+            </mat-nav-list>
           </mat-expansion-panel>
           <mat-expansion-panel>
               <mat-expansion-panel-header>

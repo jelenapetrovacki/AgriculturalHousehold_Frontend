@@ -1,0 +1,6 @@
+export class KateorijePoSvinji {
+    tetovir_broj_svinje: string;
+    datum_od: Date;
+    naziv_kategorije: string;
+    datum_do: Date;
+}

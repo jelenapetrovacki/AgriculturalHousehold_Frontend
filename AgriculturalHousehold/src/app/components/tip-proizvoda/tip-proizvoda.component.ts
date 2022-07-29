@@ -34,7 +34,7 @@ export class TipProizvodaComponent implements OnInit {
 
   public loadData() {
     this.subscription = this.tipProizvodaService.getTipoviProizvoda().subscribe(data => {
-     // console.log(data);
+      console.log(data);
      this.dataSource = new MatTableDataSource(data);
      this.dataSource.sort = this.sort;
      this.dataSource.paginator = this.paginator;
