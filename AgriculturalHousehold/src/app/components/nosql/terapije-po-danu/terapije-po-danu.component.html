@@ -1,1 +1,45 @@
-<p>terapije-po-danu works!</p>
+<mat-toolbar color="primary">
+    <span class="title-center">
+        Terapije za dan 
+        {{datum.getDate()}}.{{datum.getMonth()}}.{{datum.getFullYear()}}.
+    </span>
+  </mat-toolbar>
+  
+  <div class="container mat-elavation-z8">
+    <mat-form-field>
+      <input matInput placeholder="Pretraga terapija..." (keyup)="applyFilter($event)">
+    </mat-form-field>
+    <mat-table #table [dataSource]="dataSource" class="mat-cell" matSort>
+      <ng-container matColumnDef="tetovir_broj_svinje">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Tetovir broj</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.tetovir_broj_svinje }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="doza">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Doza</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.doza }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="dnevni_broj_davanja">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Dnevni broj davanja</mat-header-cell>
+        <mat-cell  *matCellDef="let row">{{ row.dnevni_broj_davanja }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="lek">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Lek</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.lek }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="datum">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Trajanje terapije</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.datum_od | date: "dd.MM.yyyy." }} - {{ row.datum_do | date: "dd.MM.yyyy." }}</mat-cell>
+      </ng-container>     
+ 
+      
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row
+        style="cursor: pointer;"
+        *matRowDef="let row; columns: displayedColumns">
+     </mat-row>  
+    </mat-table>
+    <mat-paginator [length]="100" [pageSize]="5" [pageSizeOptions]="[5,10,25,100]">
+    </mat-paginator>
+  
+    </div>
