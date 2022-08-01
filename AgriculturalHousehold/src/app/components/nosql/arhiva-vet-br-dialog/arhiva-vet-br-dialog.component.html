@@ -1,0 +1,26 @@
+<div class="container">
+    <h3 mat-dialog-title>Izmena veterinarskog broja: </h3>
+    <form class="mat-dialog-content" #formControl= "ngForm">
+        <div class="form">
+           <mat-form-field>
+               <input matInput placeholder="Tetovir broj svinje" [(ngModel)] = "selektovanaSvinja.tetovir_broj_svinje" name="tetovir_broj_svinje" disabled="true">
+           </mat-form-field>     
+        </div>
+        <div class="form">
+            <mat-form-field>
+                <input matInput placeholder="Veterinarski broj" [(ngModel)] = "unosVeterinarskogBroja" name="veterinarski_broj" required>
+            </mat-form-field>     
+         </div>
+        <div mat-dialog-actions>
+            <button mat-button type="submit" [mat-dialog-close]="1" (click)="izmeniVeterinarskiBroj()" [disabled]="!formControl.valid">
+                Sačuvaj
+            </button>
+           
+            <button mat-button (click)="cancel()">
+                Poništi
+            </button>
+        </div>
+
+    </form>
+
+</div> 

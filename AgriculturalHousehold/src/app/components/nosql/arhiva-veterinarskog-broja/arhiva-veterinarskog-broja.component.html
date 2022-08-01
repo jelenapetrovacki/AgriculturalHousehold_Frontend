@@ -17,14 +17,15 @@
       <mat-header-cell *matHeaderCellDef >Datum od</mat-header-cell>
       <mat-cell *matCellDef="let row">{{ row.datum_od | date: "dd.MM.yyyy."}}</mat-cell>
     </ng-container>
+
+    <ng-container matColumnDef="datum_do">
+        <mat-header-cell *matHeaderCellDef >Datum do</mat-header-cell>
+        <mat-cell *matCellDef="let row" [style.color]="row.datum_do ? 'black' : 'green'">{{ row.datum_do ? (row.datum_do | date: "dd.MM.yyyy.") : "Aktuelan" }}</mat-cell>
+    </ng-container>
     <ng-container matColumnDef="veterinarski_broj">
         <mat-header-cell *matHeaderCellDef >Veterinarski broj</mat-header-cell>
         <mat-cell *matCellDef="let row"><strong>{{ row.veterinarski_broj }}</strong></mat-cell>
       </ng-container>
-    <ng-container matColumnDef="datum_do">
-        <mat-header-cell *matHeaderCellDef >Datum do</mat-header-cell>
-        <mat-cell *matCellDef="let row">{{ row.datum_do | date: "dd.MM.yyyy."}}</mat-cell>
-    </ng-container>
     <ng-container matColumnDef="veterinar">
         <mat-header-cell *matHeaderCellDef >Veterinar</mat-header-cell>
         <mat-cell matTooltip="Veterinarska ustanova: {{ row.veterinar.ustanova }} Broj licence: {{ row.veterinar.broj_licence }}" *matCellDef="let row">{{ row.veterinar.ime }} {{row.veterinar.prezime}} {{row.veterinar.kontakt}} </mat-cell>

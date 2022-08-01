@@ -47,6 +47,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { LegloComponent } from './components/nosql/leglo/leglo.component';
 import { ArhivaVeterinarskogBrojaComponent } from './components/nosql/arhiva-veterinarskog-broja/arhiva-veterinarskog-broja.component';
 import { KategorijePoSvinjiComponent } from './components/nosql/kategorije-po-svinji/kategorije-po-svinji.component';
+import { ArhivaVetBrDialogComponent } from './components/nosql/arhiva-vet-br-dialog/arhiva-vet-br-dialog.component';
 
 
 @NgModule({
@@ -72,7 +73,8 @@ import { KategorijePoSvinjiComponent } from './components/nosql/kategorije-po-sv
     SvinjePoRasiComponent,
     LegloComponent,
     ArhivaVeterinarskogBrojaComponent,
-    KategorijePoSvinjiComponent
+    KategorijePoSvinjiComponent,
+    ArhivaVetBrDialogComponent
   ],
   imports: [
     BrowserModule,

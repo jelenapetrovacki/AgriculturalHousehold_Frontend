@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
 import { Svinja } from 'src/app/models/svinja';
 import { SvinjaService } from 'src/app/services/svinja.service';
+import { ArhivaVetBrDialogComponent } from '../arhiva-vet-br-dialog/arhiva-vet-br-dialog.component';
 import { ArhivaVeterinarskogBrojaComponent } from '../arhiva-veterinarskog-broja/arhiva-veterinarskog-broja.component';
 import { KategorijePoSvinjiComponent } from '../kategorije-po-svinji/kategorije-po-svinji.component';
 import { LegloComponent } from '../leglo/leglo.component';
@@ -73,6 +74,11 @@ export class SvinjaComponent implements OnInit, OnDestroy {
 
   prikaziArhivuKategorija(svinja: Svinja) {
     const dialogRef = this.dialog.open(KategorijePoSvinjiComponent);
+    dialogRef.componentInstance.selektovanaSvinja = svinja;
+  }
+
+  updateVeterinarskiBroj(svinja: Svinja) {
+    const dialogRef = this.dialog.open(ArhivaVetBrDialogComponent);
     dialogRef.componentInstance.selektovanaSvinja = svinja;
   }
 }

@@ -16,7 +16,7 @@ export class ArhivaVeterinarskogBrojaComponent implements OnInit {
   selektovanaSvinja: Svinja;
   subscription: Subscription; 
   arhiva: ArhivaVeterinarskogBroja[];
-  displayedColumns = ['datum_od', 'veterinarski_broj', 'datum_do', 'veterinar'];
+  displayedColumns = ['veterinarski_broj','datum_od',  'datum_do',  'veterinar'];
   dataSource!: MatTableDataSource<ArhivaVeterinarskogBroja>;
 
   constructor(private arhivaVetBrService: ArhivaVeterinarskogBrojaService,
