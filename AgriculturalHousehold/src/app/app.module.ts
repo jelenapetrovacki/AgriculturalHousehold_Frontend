@@ -15,8 +15,6 @@ import { KlijentComponent } from './components/klijent/klijent.component';
 import { NarudzbinaComponent } from './components/narudzbina/narudzbina.component';
 import { TipProizvodaComponent } from './components/tip-proizvoda/tip-proizvoda.component';
 import { HomeComponent } from './components/core/home/home.component';
-import { AboutComponent } from './components/core/about/about.component';
-import { AuthorComponent } from './components/core/author/author.component';
 import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -58,8 +56,6 @@ import { KategorijePoSvinjiComponent } from './components/nosql/kategorije-po-sv
     NarudzbinaComponent,
     TipProizvodaComponent,
     HomeComponent,
-    AboutComponent,
-    AuthorComponent,
     KlijentDialogComponent,
     TipProizvodaDialogComponent,
     NarudzbinaDialogComponent,
