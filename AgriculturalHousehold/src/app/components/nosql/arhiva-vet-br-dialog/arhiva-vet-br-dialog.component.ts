@@ -3,6 +3,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ArhivaVeterinarskogBroja } from 'src/app/models/arhiva_veterinarskog_broja';
 import { Svinja } from 'src/app/models/svinja';
+import { VeterinarType } from 'src/app/models/veterinar_type';
 import { ArhivaVeterinarskogBrojaService } from 'src/app/services/arhiva-veterinarskog-broja.service';
 
 @Component({
@@ -29,11 +30,17 @@ export class ArhivaVetBrDialogComponent implements OnInit {
     this.noviVeterinarskiBroj.veterinarski_broj = this.unosVeterinarskogBroja;
     this.noviVeterinarskiBroj.datum_od = new Date();
     this.noviVeterinarskiBroj.datum_do = null;
+   // this.noviVeterinarskiBroj.veterinar = null;
+
+   this.noviVeterinarskiBroj.veterinar = new VeterinarType();
     this.noviVeterinarskiBroj.veterinar.ime = 'Marko';
     this.noviVeterinarskiBroj.veterinar.prezime = 'Markovic';
     this.noviVeterinarskiBroj.veterinar.ustanova = 'Ustanova';
     this.noviVeterinarskiBroj.veterinar.broj_licence = '11111';
     this.noviVeterinarskiBroj.veterinar.kontakt = '06355966654';
+
+    console.log (this.noviVeterinarskiBroj);
+
 
     this.ahrivaVeterinarskogBrojaService.addVeterinarskiBroj(this.noviVeterinarskiBroj, this.selektovanaSvinja.aktuelni_veterinarski_broj).subscribe();
   }
