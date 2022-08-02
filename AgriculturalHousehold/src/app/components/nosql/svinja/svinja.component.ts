@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild, OnChanges, SimpleChanges } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -28,6 +28,7 @@ export class SvinjaComponent implements OnInit, OnDestroy {
 
   constructor(private svinjaService: SvinjaService,
     private dialog: MatDialog) { }
+
 
   ngOnInit(): void {
     this.loadData();

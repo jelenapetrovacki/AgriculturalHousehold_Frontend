@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
 import { ArhivaVeterinarskogBroja } from 'src/app/models/arhiva_veterinarskog_broja';
@@ -13,6 +14,8 @@ import { ArhivaVeterinarskogBrojaService } from 'src/app/services/arhiva-veterin
 })
 export class ArhivaVeterinarskogBrojaComponent implements OnInit {
 
+  @ViewChild(MatSort, {static: false}) sort!: MatSort;
+  
   selektovanaSvinja: Svinja;
   subscription: Subscription; 
   arhiva: ArhivaVeterinarskogBroja[];
@@ -26,7 +29,8 @@ export class ArhivaVeterinarskogBrojaComponent implements OnInit {
     this.subscription = this.arhivaVetBrService.getArhivaVeterinarskogBroja(
       this.selektovanaSvinja.tetovir_broj_svinje).subscribe(data => { 
         this.arhiva = data; 
-        this.dataSource = new MatTableDataSource(data) 
+        this.dataSource = new MatTableDataSource(data);
+        this.dataSource.sort = this.sort;
       });
   }
   

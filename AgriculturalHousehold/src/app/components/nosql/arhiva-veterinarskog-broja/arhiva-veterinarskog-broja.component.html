@@ -12,7 +12,7 @@
         </mat-list-item>
     </mat-list>
 -->    
-   <mat-table #table [dataSource]="dataSource" class="mat-cell">
+   <mat-table #table [dataSource]="dataSource" class="mat-cell" matSort matSortActive="datum_od" matSortDirection="asc" matSortDisableClear>
     <ng-container matColumnDef="datum_od">
       <mat-header-cell *matHeaderCellDef >Datum od</mat-header-cell>
       <mat-cell *matCellDef="let row">{{ row.datum_od | date: "dd.MM.yyyy."}}</mat-cell>

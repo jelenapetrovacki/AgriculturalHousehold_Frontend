@@ -1,10 +1,11 @@
+import { VeterinarType } from './../../../models/veterinar_type';
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ArhivaVeterinarskogBroja } from 'src/app/models/arhiva_veterinarskog_broja';
 import { Svinja } from 'src/app/models/svinja';
-import { VeterinarType } from 'src/app/models/veterinar_type';
 import { ArhivaVeterinarskogBrojaService } from 'src/app/services/arhiva-veterinarskog-broja.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-arhiva-vet-br-dialog',
@@ -14,38 +15,52 @@ import { ArhivaVeterinarskogBrojaService } from 'src/app/services/arhiva-veterin
 export class ArhivaVetBrDialogComponent implements OnInit {
 
   selektovanaSvinja: Svinja;
-  unosVeterinarskogBroja: string;
-  noviVeterinarskiBroj: ArhivaVeterinarskogBroja;
+  noviVeterinarskiBrojString: string;
+  stariVeterinarskiBrojString: string
+  noviVeterinarskiBrojObject: ArhivaVeterinarskogBroja;
+  veterinari: VeterinarType[] = new Array();
 
   constructor(public snackBar: MatSnackBar,
-    public dialogRef: MatDialogRef<ArhivaVetBrDialogComponent>, 
-    public ahrivaVeterinarskogBrojaService: ArhivaVeterinarskogBrojaService) { }
+    public dialogRef: MatDialogRef<ArhivaVetBrDialogComponent>,
+    public ahrivaVeterinarskogBrojaService: ArhivaVeterinarskogBrojaService, 
+    private router: Router) { }
 
   ngOnInit(): void {
+    this.noviVeterinarskiBrojObject = new ArhivaVeterinarskogBroja();
+
+    this.veterinari = [{ ime: 'Marko', prezime: 'Markovic', ustanova: 'Ustanova Markovic', broj_licence: '1af52', kontakt: '063566654' },
+    { ime: 'Lazar', prezime: 'Lazaric', ustanova: 'Ustanova Laza Lazovic', broj_licence: '151cef', kontakt: '063545154' }];
+
   }
 
   izmeniVeterinarskiBroj() {
-    this.noviVeterinarskiBroj = new ArhivaVeterinarskogBroja();
-    this.noviVeterinarskiBroj.tetovir_broj_svinje = this.selektovanaSvinja.tetovir_broj_svinje;
-    this.noviVeterinarskiBroj.veterinarski_broj = this.unosVeterinarskogBroja;
-    this.noviVeterinarskiBroj.datum_od = new Date();
-    this.noviVeterinarskiBroj.datum_do = null;
-   // this.noviVeterinarskiBroj.veterinar = null;
 
-   this.noviVeterinarskiBroj.veterinar = new VeterinarType();
-    this.noviVeterinarskiBroj.veterinar.ime = 'Marko';
-    this.noviVeterinarskiBroj.veterinar.prezime = 'Markovic';
-    this.noviVeterinarskiBroj.veterinar.ustanova = 'Ustanova';
-    this.noviVeterinarskiBroj.veterinar.broj_licence = '11111';
-    this.noviVeterinarskiBroj.veterinar.kontakt = '06355966654';
+    this.dodajNoviVeterinarskiBrojObject();
 
-    console.log (this.noviVeterinarskiBroj);
-
-
-    this.ahrivaVeterinarskogBrojaService.addVeterinarskiBroj(this.noviVeterinarskiBroj, this.selektovanaSvinja.aktuelni_veterinarski_broj).subscribe();
+    this.stariVeterinarskiBrojString = this.selektovanaSvinja.aktuelni_veterinarski_broj;
+    this.ahrivaVeterinarskogBrojaService.addVeterinarskiBroj(this.noviVeterinarskiBrojObject,
+      this.stariVeterinarskiBrojString).subscribe(() => {
+        console.log("OK");
+        this.router.navigate(['/svinje']).then(() => {
+          window.location.reload();
+        });
+      });
   }
-  public cancel():void {
+
+  dodajNoviVeterinarskiBrojObject() {
+    this.noviVeterinarskiBrojObject.tetovir_broj_svinje = this.selektovanaSvinja.tetovir_broj_svinje;
+    this.noviVeterinarskiBrojObject.datum_od = null; //setovacemo ga na backendu
+    this.noviVeterinarskiBrojObject.veterinarski_broj = this.noviVeterinarskiBrojString;
+    this.noviVeterinarskiBrojObject.datum_do = null; //svakako je null jer je aktuelni veterinarski broj
+    //setovan je kroz ng model sa htmlom
+    //this.noviVeterinarskiBrojObject.veterinar 
+  }
+
+  compareTo(a: any, b: any) {
+    return a.id == b.id;
+  }
+  public cancel(): void {
     this.dialogRef.close();
-    this.snackBar.open('Odustali ste.', 'Zatvori', {duration: 1000});
+    this.snackBar.open('Odustali ste.', 'Zatvori', { duration: 1000 });
   }
 }
