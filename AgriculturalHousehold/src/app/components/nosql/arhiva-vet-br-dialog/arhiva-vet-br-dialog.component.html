@@ -15,9 +15,9 @@
         </div>
         <div class="form">
             <mat-form-field>
-                <mat-select [(ngModel)]="noviVeterinarskiBrojObject.veterinar" placeholder="Veterinar" name="veterinar" [compareWith]="compareTo" required>
+                <mat-select [(ngModel)]="izabraniVeterinar" placeholder="Veterinar" name="veterinar" [compareWith]="compareTo" required>
                     <mat-option *ngFor="let veterinar of veterinari" [value]="veterinar" >
-                        {{ veterinar.ime }} {{ veterinar.prezime }} {{ veterinar.broj_licence }}
+                        {{ veterinar.veterinar_podaci.ime }} {{ veterinar.veterinar_podaci.prezime }} {{ veterinar.veterinar_podaci.broj_licence }}
                     </mat-option>
                 </mat-select>
             </mat-form-field>

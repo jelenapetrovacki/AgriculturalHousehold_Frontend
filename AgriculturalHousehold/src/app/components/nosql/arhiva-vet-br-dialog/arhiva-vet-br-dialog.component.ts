@@ -1,3 +1,4 @@
+import { VeterinarService } from './../../../services/veterinar.service';
 import { VeterinarType } from './../../../models/veterinar_type';
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
@@ -6,6 +7,7 @@ import { ArhivaVeterinarskogBroja } from 'src/app/models/arhiva_veterinarskog_br
 import { Svinja } from 'src/app/models/svinja';
 import { ArhivaVeterinarskogBrojaService } from 'src/app/services/arhiva-veterinarskog-broja.service';
 import { Router } from '@angular/router';
+import { Veterinar } from 'src/app/models/veterinar';
 
 @Component({
   selector: 'app-arhiva-vet-br-dialog',
@@ -18,19 +20,20 @@ export class ArhivaVetBrDialogComponent implements OnInit {
   noviVeterinarskiBrojString: string;
   stariVeterinarskiBrojString: string
   noviVeterinarskiBrojObject: ArhivaVeterinarskogBroja;
-  veterinari: VeterinarType[] = new Array();
+  veterinari: Veterinar[];
+  izabraniVeterinar: Veterinar;
 
   constructor(public snackBar: MatSnackBar,
     public dialogRef: MatDialogRef<ArhivaVetBrDialogComponent>,
     public ahrivaVeterinarskogBrojaService: ArhivaVeterinarskogBrojaService, 
+    public veterinariService: VeterinarService,
     private router: Router) { }
 
   ngOnInit(): void {
     this.noviVeterinarskiBrojObject = new ArhivaVeterinarskogBroja();
-
-    this.veterinari = [{ ime: 'Marko', prezime: 'Markovic', ustanova: 'Ustanova Markovic', broj_licence: '1af52', kontakt: '063566654' },
-    { ime: 'Lazar', prezime: 'Lazaric', ustanova: 'Ustanova Laza Lazovic', broj_licence: '151cef', kontakt: '063545154' }];
-
+    this.veterinariService.getVeterinari().subscribe(veterinariResult => {
+        this.veterinari = veterinariResult;
+    });
   }
 
   izmeniVeterinarskiBroj() {
@@ -40,7 +43,6 @@ export class ArhivaVetBrDialogComponent implements OnInit {
     this.stariVeterinarskiBrojString = this.selektovanaSvinja.aktuelni_veterinarski_broj;
     this.ahrivaVeterinarskogBrojaService.addVeterinarskiBroj(this.noviVeterinarskiBrojObject,
       this.stariVeterinarskiBrojString).subscribe(() => {
-        console.log("OK");
         this.router.navigate(['/svinje']).then(() => {
           window.location.reload();
         });
@@ -52,8 +54,12 @@ export class ArhivaVetBrDialogComponent implements OnInit {
     this.noviVeterinarskiBrojObject.datum_od = null; //setovacemo ga na backendu
     this.noviVeterinarskiBrojObject.veterinarski_broj = this.noviVeterinarskiBrojString;
     this.noviVeterinarskiBrojObject.datum_do = null; //svakako je null jer je aktuelni veterinarski broj
-    //setovan je kroz ng model sa htmlom
-    //this.noviVeterinarskiBrojObject.veterinar 
+    this.noviVeterinarskiBrojObject.veterinar = new VeterinarType();
+    this.noviVeterinarskiBrojObject.veterinar.ime = this.izabraniVeterinar.veterinar_podaci.ime; 
+    this.noviVeterinarskiBrojObject.veterinar.prezime = this.izabraniVeterinar.veterinar_podaci.prezime; 
+    this.noviVeterinarskiBrojObject.veterinar.ustanova = this.izabraniVeterinar.veterinar_podaci.ustanova; 
+    this.noviVeterinarskiBrojObject.veterinar.broj_licence = this.izabraniVeterinar.veterinar_podaci.broj_licence; 
+    this.noviVeterinarskiBrojObject.veterinar.kontakt = this.izabraniVeterinar.veterinar_podaci.kontakt; 
   }
 
   compareTo(a: any, b: any) {
