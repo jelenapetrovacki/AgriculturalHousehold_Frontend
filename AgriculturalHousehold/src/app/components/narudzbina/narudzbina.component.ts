@@ -40,6 +40,7 @@ export class NarudzbinaComponent implements OnInit {
     this.faktureIliStavke = 1;
     this.selektovanaNarudzbina = row;
   }
+  
   prikaziStavkeNarudzbine(row: Narudzbina) {
     this.faktureIliStavke = 2;
     this.selektovanaNarudzbina = row;

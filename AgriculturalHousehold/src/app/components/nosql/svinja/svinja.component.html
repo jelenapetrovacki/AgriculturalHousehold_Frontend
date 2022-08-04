@@ -36,10 +36,10 @@
         <button mat-icon-button color="primary" (click)="updateVeterinarskiBroj(row)">
           <mat-icon aria-label="Edit">edit</mat-icon>
         </button>
-        <button mat-button color="primary">
+        <button mat-button color="primary" (click)="readVakcine(row)">
           Vakcine
         </button>
-        <button mat-button color="primary">
+        <button mat-button color="primary" (click)="readPregledi(row)">
           Pregledi
         </button>
       </mat-cell>
@@ -58,7 +58,14 @@
     <app-svinje-po-rasi
     *ngIf="selektovanaRasa"
      [selektovanaRasa]="selektovanaRasa">
-
      </app-svinje-po-rasi>
+     <app-vakcine
+     *ngIf="selektovanaSvinjaVakcine && !selektovanaSvinjaPregledi"
+      [selektovanaSvinjaVakcine]="selektovanaSvinjaVakcine">
+      </app-vakcine>
+      <app-pregledi
+      *ngIf="selektovanaSvinjaPregledi && !selektovanaSvinjaVakcine"
+       [selektovanaSvinjaPregledi]="selektovanaSvinjaPregledi">
+       </app-pregledi>
   </div>
 </div>

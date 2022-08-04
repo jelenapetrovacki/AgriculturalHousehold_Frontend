@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewChild, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -22,6 +22,8 @@ export class SvinjaComponent implements OnInit, OnDestroy {
   dataSource!: MatTableDataSource<SvinjaComponent>;
   subscription!: Subscription;
   selektovanaRasa!: string;
+  selektovanaSvinjaVakcine: Svinja;
+  selektovanaSvinjaPregledi: Svinja;
 
   @ViewChild(MatSort, {static: false}) sort!: MatSort;
   @ViewChild(MatPaginator, {static:false}) paginator!: MatPaginator;
@@ -41,7 +43,6 @@ export class SvinjaComponent implements OnInit, OnDestroy {
 
   loadData(): void {
     this.subscription = this.svinjaService.getSvinje().subscribe(data => {
-      console.log (data);
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
@@ -76,6 +77,16 @@ export class SvinjaComponent implements OnInit, OnDestroy {
   prikaziArhivuKategorija(svinja: Svinja) {
     const dialogRef = this.dialog.open(KategorijePoSvinjiComponent);
     dialogRef.componentInstance.selektovanaSvinja = svinja;
+  }
+
+  readVakcine(svinja: Svinja) {
+    this.selektovanaSvinjaPregledi = null;
+    this.selektovanaSvinjaVakcine = svinja;
+  }
+
+  readPregledi(svinja: Svinja) {
+    this.selektovanaSvinjaVakcine = null;
+    this.selektovanaSvinjaPregledi = svinja;
   }
 
   updateVeterinarskiBroj(svinja: Svinja) {

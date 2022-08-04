@@ -21,6 +21,8 @@ export const ARH_VET_BROJA_URL = 'http://localhost:8083/arhivaVeterinarskogBroja
 export const ARH_KATEGORIJA_URL = 'http://localhost:8083/arhivaKategorija'; 
 export const TERAPIJE_PO_DANU_URL = 'http://localhost:8083/terapijePoDanu';
 export const VETERINARI_URL = 'http://localhost:8083/veterinari';  
+export const VAKCINE_URL = 'http://localhost:8083/vakcinePoSvinji'; 
+export const PREGLEDI_URL = 'http://localhost:8083/pregledi'; 
 
 
 

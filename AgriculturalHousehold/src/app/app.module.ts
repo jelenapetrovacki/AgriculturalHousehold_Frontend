@@ -48,6 +48,8 @@ import { LegloComponent } from './components/nosql/leglo/leglo.component';
 import { ArhivaVeterinarskogBrojaComponent } from './components/nosql/arhiva-veterinarskog-broja/arhiva-veterinarskog-broja.component';
 import { KategorijePoSvinjiComponent } from './components/nosql/kategorije-po-svinji/kategorije-po-svinji.component';
 import { ArhivaVetBrDialogComponent } from './components/nosql/arhiva-vet-br-dialog/arhiva-vet-br-dialog.component';
+import { PreglediComponent } from './components/nosql/pregledi/pregledi.component';
+import { VakcineComponent } from './components/nosql/vakcine/vakcine.component';
 
 
 @NgModule({
@@ -74,7 +76,9 @@ import { ArhivaVetBrDialogComponent } from './components/nosql/arhiva-vet-br-dia
     LegloComponent,
     ArhivaVeterinarskogBrojaComponent,
     KategorijePoSvinjiComponent,
-    ArhivaVetBrDialogComponent
+    ArhivaVetBrDialogComponent,
+    PreglediComponent,
+    VakcineComponent
   ],
   imports: [
     BrowserModule,
