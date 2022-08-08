@@ -1,13 +1,14 @@
-import { VeterinarService } from './../../../services/veterinar.service';
-import { VeterinarType } from './../../../models/veterinar_type';
+
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ArhivaVeterinarskogBroja } from 'src/app/models/arhiva_veterinarskog_broja';
-import { Svinja } from 'src/app/models/svinja';
 import { ArhivaVeterinarskogBrojaService } from 'src/app/services/arhiva-veterinarskog-broja.service';
 import { Router } from '@angular/router';
 import { Veterinar } from 'src/app/models/veterinar';
+import { VeterinarService } from 'src/app/services/veterinar.service';
+import { VeterinarType } from 'src/app/models/veterinar_type';
+import { Svinja } from 'src/app/models/svinja';
 
 @Component({
   selector: 'app-arhiva-vet-br-dialog',

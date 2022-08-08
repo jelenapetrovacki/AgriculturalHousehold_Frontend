@@ -1,0 +1,54 @@
+<div id="wrapper">
+    <h3>Prepisane terapije na izabranom pregledu</h3>
+    <h4>Sifra pregleda: <strong>{{zaPregled.sifra_pregleda}}</strong></h4>
+    <br>
+    
+   <mat-table #table [dataSource]="dataSource" class="mat-cell">
+
+    <ng-container matColumnDef="terapija_tip">
+      <mat-header-cell *matHeaderCellDef >Tip terapije</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{ row.terapija.tip_terapije }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="terapija_naziv">
+        <mat-header-cell *matHeaderCellDef >Naziv terapije</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.terapija.naziv_terapije }} </mat-cell>
+      </ng-container>
+
+    <ng-container matColumnDef="datum_od">
+        <mat-header-cell *matHeaderCellDef >Datum početka primanja</mat-header-cell>
+        <mat-cell *matCellDef="let row" >
+            {{ row.datum_od | date: "dd. MM. yyyy." }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="datum_do">
+        <mat-header-cell *matHeaderCellDef >Datum kraja primanja</mat-header-cell>
+        <mat-cell *matCellDef="let row" >
+            {{ row.datum_do | date: "dd. MM. yyyy." }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="dnevni_broj_davanja">
+        <mat-header-cell *matHeaderCellDef >Dnevni broj davanja</mat-header-cell>
+        <mat-cell *matCellDef="let row" >
+            {{ row.dnevni_broj_davanja }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="doza">
+        <mat-header-cell *matHeaderCellDef >Doza terapije</mat-header-cell>
+        <mat-cell *matCellDef="let row" >
+            {{ row.doza }}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row
+      style="cursor: pointer;"
+      *matRowDef="let row; columns: displayedColumns">
+   </mat-row>  
+  </mat-table>
+</div>
+
+<div mat-dialog-actions class="mat-dialog-actions">
+    <button id="buttonPosition" mat-button (click)="zatvori()">
+        Zatvori
+    </button>
+</div>

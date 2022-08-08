@@ -13,25 +13,30 @@
     </ng-container>
     <ng-container matColumnDef="oznaka_legla">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Oznaka legla</mat-header-cell>
-      <mat-cell matTooltip="Prikaži informacije o leglu {{ row.oznaka_legla }}" (click)="prikaziLeglo(row.oznaka_legla)" *matCellDef="let row">{{ row.oznaka_legla }}</mat-cell>
+      <mat-cell matTooltip="Prikaži informacije o leglu {{ row.oznaka_legla }}" (click)="prikaziLeglo(row.oznaka_legla)"
+        *matCellDef="let row">{{ row.oznaka_legla }}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="rasa">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Rasa</mat-header-cell>
-      <mat-cell matTooltip="Prikaži svinje koje pripadaju {{ row.rasa }} rasi" (click)="selektujRasu(row.rasa)" *matCellDef="let row">{{ row.rasa }}</mat-cell>
+      <mat-cell matTooltip="Prikaži svinje koje pripadaju {{ row.rasa }} rasi" (click)="selektujRasu(row.rasa)"
+        *matCellDef="let row">{{ row.rasa }}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="kategorija">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Kategorija</mat-header-cell>
-      <mat-cell matTooltip="Prikaži arhivu kategorija svinje {{ row.tetovir_broj_svinje }}" (click)="prikaziArhivuKategorija(row)" *matCellDef="let row">{{ row.kategorija }}</mat-cell>
+      <mat-cell matTooltip="Prikaži arhivu kategorija svinje {{ row.tetovir_broj_svinje }}"
+        (click)="prikaziArhivuKategorija(row)" *matCellDef="let row">{{ row.kategorija }}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="aktuelni_veterinarski_broj">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Aktuelni veterinarski broj</mat-header-cell>
-      <mat-cell matTooltip="Prikaži arhivu veterinarskog broja svinje {{ row.tetovir_broj_svinje }}" (click)="prikaziArhivuVeterinarskogBroja(row)" *matCellDef="let row">{{ row.aktuelni_veterinarski_broj }}</mat-cell>
+      <mat-cell matTooltip="Prikaži arhivu veterinarskog broja svinje {{ row.tetovir_broj_svinje }}"
+        (click)="prikaziArhivuVeterinarskogBroja(row)" *matCellDef="let row">{{ row.aktuelni_veterinarski_broj }}
+      </mat-cell>
     </ng-container>
-    
+
     <!-- Action Buttons -->
     <ng-container matColumnDef="actions">
-    <mat-header-cell *matHeaderCellDef>
-    </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef>
+      </mat-header-cell>
       <mat-cell *matCellDef="let row; let i = index">
         <button mat-icon-button color="primary" (click)="updateVeterinarskiBroj(row)">
           <mat-icon aria-label="Edit">edit</mat-icon>
@@ -44,28 +49,23 @@
         </button>
       </mat-cell>
     </ng-container>
-    
+
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row
-      style="cursor: pointer;"
-      *matRowDef="let row; columns: displayedColumns">
-   </mat-row>  
+    <mat-row style="cursor: pointer;" *matRowDef="let row; columns: displayedColumns">
+    </mat-row>
   </mat-table>
   <mat-paginator [length]="100" [pageSize]="5" [pageSizeOptions]="[5,10,25,100]">
   </mat-paginator>
 
   <div class="container mat-elevation-z8">
-    <app-svinje-po-rasi
-    *ngIf="selektovanaRasa"
-     [selektovanaRasa]="selektovanaRasa">
-     </app-svinje-po-rasi>
-     <app-vakcine
-     *ngIf="selektovanaSvinjaVakcine && !selektovanaSvinjaPregledi"
+    <app-svinje-po-rasi *ngIf="selektovanaRasa && !selektovanaSvinjaPregledi && !selektovanaSvinjaVakcine"
+      [selektovanaRasa]="selektovanaRasa">
+    </app-svinje-po-rasi>
+    <app-vakcine *ngIf="selektovanaSvinjaVakcine && !selektovanaSvinjaPregledi && !selektovanaRasa"
       [selektovanaSvinjaVakcine]="selektovanaSvinjaVakcine">
-      </app-vakcine>
-      <app-pregledi
-      *ngIf="selektovanaSvinjaPregledi && !selektovanaSvinjaVakcine"
-       [selektovanaSvinjaPregledi]="selektovanaSvinjaPregledi">
-       </app-pregledi>
+    </app-vakcine>
+    <app-pregledi *ngIf="selektovanaSvinjaPregledi && !selektovanaSvinjaVakcine && !selektovanaRasa"
+      [selektovanaSvinjaPregledi]="selektovanaSvinjaPregledi">
+    </app-pregledi>
   </div>
 </div>

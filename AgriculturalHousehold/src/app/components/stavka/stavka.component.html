@@ -4,8 +4,8 @@
 <div class="container mat-elevation-z8">
     <mat-form-field>
         <input matInput placeholder="Pretraga stavki odabrane narudžbine..." (keyup)="applyFilter($event)">
-      </mat-form-field>
-        <mat-table #table matSort [dataSource]="dataSource" class="mat-cell" matSort>
+    </mat-form-field>
+    <mat-table #table matSort [dataSource]="dataSource" class="mat-cell" matSort>
         <ng-container matColumnDef="id">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
             <mat-cell *matCellDef="let row">{{ row.id }}</mat-cell>
@@ -28,9 +28,10 @@
 
         <ng-container matColumnDef="faktura">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Faktura</mat-header-cell>
-            <mat-cell *matCellDef="let row"> {{ row.faktura ? "Fakturisana stavka" : "Nije fakturisana stavka"  }}</mat-cell>
+            <mat-cell *matCellDef="let row"> {{ row.faktura ? "Fakturisana stavka" : "Nije fakturisana stavka" }}
+            </mat-cell>
         </ng-container>
-       
+
         <!-- actions -->
         <ng-container matColumnDef="actions">
             <mat-header-cell *matHeaderCellDef>

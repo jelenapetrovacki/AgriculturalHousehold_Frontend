@@ -1,7 +1,6 @@
+import { SvinjePoRasi } from './../../../models/svinje-po-rasi';
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
-import { SvinjePoRasi } from 'src/app/models/svinje-po-rasi';
 import { SvinjaService } from 'src/app/services/svinja.service';
 
 @Component({
@@ -10,11 +9,11 @@ import { SvinjaService } from 'src/app/services/svinja.service';
   styleUrls: ['./svinje-po-rasi.component.css']
 })
 export class SvinjePoRasiComponent implements OnInit, OnDestroy {
-  
+
   //displayedColumns = ['oznaka_rase', 'tetovir_broj_svinje', 'naziv_rase'];
- // dataSource!: MatTableDataSource<SvinjePoRasiComponent>;
-  subscription!: Subscription;
+  //dataSource!: MatTableDataSource<SvinjePoRasiComponent>;
   svinjePoRasi: SvinjePoRasi[];
+  subscription!: Subscription;
   @Input() selektovanaRasa!: string;
 
   constructor(private svinjaService: SvinjaService) { }
@@ -29,13 +28,13 @@ export class SvinjePoRasiComponent implements OnInit, OnDestroy {
 
   loadData(): void {
     this.subscription = this.svinjaService.getSvinjePoRasi(this.selektovanaRasa).subscribe(data => {
-      //this.dataSource = new MatTableDataSource(data);
       this.svinjePoRasi = data;
-     },
-     (error:Error) => {
-       console.log(error.name + ' ' + error.message);
-     }
-     );
+      console.log(data);
+    },
+      (error: Error) => {
+        console.log(error.name + ' ' + error.message);
+      }
+    );
   }
 
 

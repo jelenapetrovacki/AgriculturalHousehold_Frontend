@@ -1,0 +1,41 @@
+<div class="container">
+    <h3 mat-dialog-title>Dodavanje vakcine za izabranu svinju</h3>
+    <form class="mat-dialog-content" #formControl="ngForm">
+        <div class="form">
+            <mat-form-field>
+                <mat-select [(ngModel)]="izabraniVeterinar" placeholder="Izaberi veterinara" name="veterinar" [compareWith]="compareTo" required>
+                    <mat-option *ngFor="let veterinar of veterinari" [value]="veterinar" >
+                        {{ veterinar.veterinar_podaci.ime }} {{ veterinar.veterinar_podaci.prezime }} {{ veterinar.veterinar_podaci.broj_licence }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="form">
+            <mat-form-field>
+                <mat-select [(ngModel)]="izabranaVakcina" placeholder="Izaberi vakcinu" name="vakcina" [compareWith]="compareTo" required>
+                    <mat-option *ngFor="let vakcina of vakcine" [value]="vakcina" >
+                        Šifra: {{ vakcina.sifra_vakcine }} -- Tip vakcine: {{ vakcina.naziv_tipa_vakcine }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="form">
+            <mat-form-field>
+                <input matInput [(ngModel)]="vakcinaToAdd.kolicina_doze_vakcine" placeholder="Kolicina doze vakcine (mg)"
+                    name="kolicina_doze_vakcine" required>
+            </mat-form-field>
+        </div>
+
+        <div mat-dialog-actions>
+            <button mat-button type="submit" [mat-dialog-close]="1" (click)="add()" [disabled]="!formControl.valid">
+                Sačuvaj
+            </button>
+            <button mat-button (click)="cancel()">
+                Poništi
+            </button>
+        </div>
+
+
+    </form>
+
+</div>

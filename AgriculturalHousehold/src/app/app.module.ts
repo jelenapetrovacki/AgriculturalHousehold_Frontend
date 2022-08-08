@@ -44,12 +44,15 @@ import { SvinjaComponent } from './components/nosql/svinja/svinja.component';
 import { TerapijePoDanuComponent } from './components/nosql/terapije-po-danu/terapije-po-danu.component';
 import { SvinjePoRasiComponent } from './components/nosql/svinje-po-rasi/svinje-po-rasi.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { LegloComponent } from './components/nosql/leglo/leglo.component';
+import { LegloComponent } from './components/nosql/dialogs/leglo/leglo.component';
 import { ArhivaVeterinarskogBrojaComponent } from './components/nosql/arhiva-veterinarskog-broja/arhiva-veterinarskog-broja.component';
-import { KategorijePoSvinjiComponent } from './components/nosql/kategorije-po-svinji/kategorije-po-svinji.component';
-import { ArhivaVetBrDialogComponent } from './components/nosql/arhiva-vet-br-dialog/arhiva-vet-br-dialog.component';
+import { KategorijePoSvinjiComponent } from './components/nosql/dialogs/kategorije-po-svinji/kategorije-po-svinji.component';
 import { PreglediComponent } from './components/nosql/pregledi/pregledi.component';
 import { VakcineComponent } from './components/nosql/vakcine/vakcine.component';
+import { TerapijePoPregleduDialogComponent } from './components/nosql/dialogs/terapije-po-pregledu-dialog/terapije-po-pregledu-dialog.component';
+import { ArhivaVetBrDialogComponent } from './components/nosql/dialogs/arhiva-vet-br-dialog/arhiva-vet-br-dialog.component';
+import { BolestiPoPregleduDialogComponent } from './components/nosql/dialogs/bolesti-po-pregledu-dialog/bolesti-po-pregledu-dialog.component';
+import { DodajVakcinuDialogComponent } from './components/nosql/dialogs/dodaj-vakcinu-dialog/dodaj-vakcinu-dialog.component';
 
 
 @NgModule({
@@ -78,7 +81,10 @@ import { VakcineComponent } from './components/nosql/vakcine/vakcine.component';
     KategorijePoSvinjiComponent,
     ArhivaVetBrDialogComponent,
     PreglediComponent,
-    VakcineComponent
+    VakcineComponent,
+    BolestiPoPregleduDialogComponent,
+    TerapijePoPregleduDialogComponent,
+    DodajVakcinuDialogComponent
   ],
   imports: [
     BrowserModule,

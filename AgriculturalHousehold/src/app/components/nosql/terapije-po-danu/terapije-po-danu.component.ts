@@ -4,7 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
 import { TerapijePoDanu } from 'src/app/models/terapije_po_danu';
-import { TerapijeService } from 'src/app/services/terapije.service';
+import { TerapijeService } from 'src/app/services/terapije-po-danu.service';
 
 @Component({
   selector: 'app-terapije-po-danu',

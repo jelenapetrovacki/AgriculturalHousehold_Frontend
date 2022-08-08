@@ -6,10 +6,10 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
 import { Svinja } from 'src/app/models/svinja';
 import { SvinjaService } from 'src/app/services/svinja.service';
-import { ArhivaVetBrDialogComponent } from '../arhiva-vet-br-dialog/arhiva-vet-br-dialog.component';
 import { ArhivaVeterinarskogBrojaComponent } from '../arhiva-veterinarskog-broja/arhiva-veterinarskog-broja.component';
-import { KategorijePoSvinjiComponent } from '../kategorije-po-svinji/kategorije-po-svinji.component';
-import { LegloComponent } from '../leglo/leglo.component';
+import { ArhivaVetBrDialogComponent } from '../dialogs/arhiva-vet-br-dialog/arhiva-vet-br-dialog.component';
+import { KategorijePoSvinjiComponent } from '../dialogs/kategorije-po-svinji/kategorije-po-svinji.component';
+import { LegloComponent } from '../dialogs/leglo/leglo.component';
 
 @Component({
   selector: 'app-svinja',
@@ -61,7 +61,9 @@ export class SvinjaComponent implements OnInit, OnDestroy {
   }
 
   selektujRasu(rasa: string) {
-      this.selektovanaRasa = rasa;
+    this.selektovanaSvinjaPregledi = null;
+    this.selektovanaSvinjaPregledi = null;
+    this.selektovanaRasa = rasa;
   }
 
   prikaziLeglo(oznaka_legla: string) {
@@ -81,11 +83,13 @@ export class SvinjaComponent implements OnInit, OnDestroy {
 
   readVakcine(svinja: Svinja) {
     this.selektovanaSvinjaPregledi = null;
+    this.selektovanaRasa = null;
     this.selektovanaSvinjaVakcine = svinja;
   }
 
   readPregledi(svinja: Svinja) {
     this.selektovanaSvinjaVakcine = null;
+    this.selektovanaRasa = null;
     this.selektovanaSvinjaPregledi = svinja;
   }
 

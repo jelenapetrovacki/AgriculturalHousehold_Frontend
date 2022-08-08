@@ -1,1 +1,50 @@
-<p>pregledi works!</p>
+<mat-toolbar class="toolbarNew" color="primary">
+    <span class="title-center">Pregledi svinje sa tetovir brojem: {{selektovanaSvinjaPregledi.tetovir_broj_svinje}}</span>
+</mat-toolbar>
+<div class="container mat-elevation-z8">
+    <mat-table #table [dataSource]="dataSource" class="mat-cell">
+        <ng-container matColumnDef="sifra_pregleda">
+            <mat-header-cell *matHeaderCellDef >Sifra urađenog pregleda</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{ row.sifra_pregleda }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="naziv_pregleda">
+            <mat-header-cell *matHeaderCellDef>Naziv pregleda</mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{ row.naziv_pregleda }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="datum_pregleda">
+            <mat-header-cell *matHeaderCellDef>Datuma izvršenog pregleda</mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{ row.datum_pregleda | date: "dd. MM. yyyy." }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="izvestaj">
+            <mat-header-cell *matHeaderCellDef>Izveštaj veterinara</mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{ row.izvestaj }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="veterinar">
+            <mat-header-cell *matHeaderCellDef>Veterinar koji je izvršio regled</mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{ row.veterinar.ime }}  {{ row.veterinar.prezime }} <br> Broj licence: {{ row.veterinar.broj_licence }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef>
+            </mat-header-cell>
+              <mat-cell *matCellDef="let row; let i = index">
+                <button mat-button color="primary" (click)="readBolesti(row)">
+                  Bolesti
+                </button>
+                <button mat-button color="primary" (click)="readTerapije(row)">
+                  Terapije
+                </button>
+              </mat-cell>
+            </ng-container>
+
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row style="cursor: default" *matRowDef="let row; columns: displayedColumns">
+        </mat-row>
+    </mat-table>
+</div>
