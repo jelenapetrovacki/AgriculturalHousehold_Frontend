@@ -15,7 +15,7 @@ export const STAVKE_BY_FAKTURAID_URL = 'http://localhost:8083/stavkeFaktura';
 
 
 export const SVINJA_URL = 'http://localhost:8083/svinje'; 
-export const SVINJE_PO_RASI_URL = 'http://localhost:8083/rasa'; 
+//export const SVINJE_PO_RASI_URL = 'http://localhost:8083/rasa'; 
 export const LEGLO_URL = 'http://localhost:8083/leglo'; 
 export const ARH_VET_BROJA_URL = 'http://localhost:8083/arhivaVeterinarskogBroja'; 
 export const ARH_KATEGORIJA_URL = 'http://localhost:8083/arhivaKategorija'; 
@@ -27,6 +27,10 @@ export const PREGLEDI_URL = 'http://localhost:8083/pregledi';
 export const TERAPIJE_PO_PREGLEDU_URL = 'http://localhost:8083/terapije'; 
 export const BOLESTI_PO_PREGLEDU_URL = 'http://localhost:8083/bolesti'; 
 export const BROJ_VAKCINA_URL = 'http://localhost:8083/svinjaBrojVakcina'; 
+export const RASE_URL = 'http://localhost:8083/rase'; 
+export const KATEGORIJE_URL = 'http://localhost:8083/kategorije'; 
+export const SVINJE_RASA_URL = 'http://localhost:8083/svinjeRasa'; 
+export const SVINJE_KATEGORIJA_URL = 'http://localhost:8083/svinjeKategorija'; 
 
 
 

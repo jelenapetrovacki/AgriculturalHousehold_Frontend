@@ -1,0 +1,41 @@
+<mat-toolbar color="primary">
+    <span class="title-center">Pregled kategorija svinja i njihova pripadnost</span>
+</mat-toolbar>
+
+<div class="container mat-elavation-z8">
+    <mat-table #table [dataSource]="dataSource" class="mat-cell">
+        <ng-container matColumnDef="naziv_kategorije">
+            <mat-header-cell *matHeaderCellDef>Naziv kategorije</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{ row.naziv_kategorije }}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="pol_svinje">
+            <mat-header-cell *matHeaderCellDef>Pol svinje</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{ row.pol_svinje }}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="uzrast">
+            <mat-header-cell *matHeaderCellDef>Uzrast svinje</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{ row.uzrast }}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="rasno_poreklo">
+            <mat-header-cell *matHeaderCellDef>Rasno poreklo</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{ row.rasno_poreklo }}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="masa_trupa">
+            <mat-header-cell *matHeaderCellDef>Masa trupa</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{ row.masa_trupa }}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="trup">
+            <mat-header-cell *matHeaderCellDef>Trup </mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <ul>
+                    <li *ngFor="let deoTrupa of row.trup">{{deoTrupa}}</li>
+                </ul>
+            </mat-cell>
+        </ng-container>
+
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row style="cursor: pointer;" *matRowDef="let row; columns: displayedColumns">
+        </mat-row>
+    </mat-table>
+</div>

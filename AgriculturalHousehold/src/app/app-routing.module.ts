@@ -1,3 +1,5 @@
+import { KategorijeComponent } from './components/nosql/kategorije/kategorije.component';
+import { RaseComponent } from './components/nosql/rase/rase.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/core/home/home.component';
@@ -14,6 +16,8 @@ const routes: Routes = [
   { path: 'pocetna', component: HomeComponent },
   { path: 'svinje', component: SvinjaComponent },
   { path: 'danasnjeTerapije', component: TerapijePoDanuComponent },
+  { path: 'rase', component: RaseComponent },
+  { path: 'kategorije', component: KategorijeComponent },
   { path: '', redirectTo: '/pocetna', pathMatch: 'full'}
 ];
 

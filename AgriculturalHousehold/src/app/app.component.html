@@ -6,25 +6,7 @@
                   home
               </mat-icon>
           </a>
-          <mat-expansion-panel>
-              <mat-expansion-panel-header>
-                  <mat-panel-title>
-                      Aplikacija
-                  </mat-panel-title>
-                  <mat-panel-description>
-                      Aplikacija
-                  </mat-panel-description>
-              </mat-expansion-panel-header>
-              <mat-nav-list>
-                  <a mat-button [routerLink]="['/klijent']">Klijent</a>
-              </mat-nav-list>
-              <mat-nav-list>
-                  <a mat-button [routerLink]="['/tipProizvoda']">Tipovi proizvoda</a>
-              </mat-nav-list>
-              <mat-nav-list>
-                  <a mat-button [routerLink]="['/narudzbina']">Narudzbine</a>
-              </mat-nav-list>
-          </mat-expansion-panel>
+          
           <mat-expansion-panel>
             <mat-expansion-panel-header>
                 <mat-panel-title>
@@ -35,9 +17,32 @@
                 <a mat-button [routerLink]="['/svinje']">Karton svinja</a>
             </mat-nav-list>
             <mat-nav-list>
+                <a mat-button [routerLink]="['/rase']">Spisak rasa</a>
+            </mat-nav-list>
+            <mat-nav-list>
+                <a mat-button [routerLink]="['/kategorije']">Spisak kategorija</a>
+            </mat-nav-list>
+            <mat-nav-list>
                 <a mat-button [routerLink]="['/danasnjeTerapije']">Terapije za današnji dan</a>
             </mat-nav-list>
           </mat-expansion-panel>
+
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Administracija
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-nav-list>
+                <a mat-button [routerLink]="['/klijent']">Klijent</a>
+            </mat-nav-list>
+            <mat-nav-list>
+                <a mat-button [routerLink]="['/tipProizvoda']">Tipovi proizvoda</a>
+            </mat-nav-list>
+            <mat-nav-list>
+                <a mat-button [routerLink]="['/narudzbina']">Narudzbine</a>
+            </mat-nav-list>
+        </mat-expansion-panel>
         
       </mat-accordion>
   </mat-sidenav>

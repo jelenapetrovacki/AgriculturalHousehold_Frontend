@@ -1,31 +1,32 @@
 <div id="wrapper">
-    <h3>Prikaz utvrđenih bolesti na izabranom pregledu</h3>
-    <h4>Sifra pregleda: <strong>{{zaPregled.sifra_pregleda}}</strong></h4>
-    <br>
-    
-   <mat-table #table [dataSource]="dataSource" class="mat-cell">
+  <h3>Prikaz utvrđenih bolesti na izabranom pregledu</h3>
+  <h4>Sifra pregleda: <strong>{{zaPregled.sifra_pregleda}}</strong></h4>
+  <br>
+
+  <mat-table #table [dataSource]="dataSource" class="mat-cell">
 
     <ng-container matColumnDef="naziv_bolesti">
-      <mat-header-cell *matHeaderCellDef >Naziv bolesti</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef>Naziv bolesti</mat-header-cell>
       <mat-cell *matCellDef="let row">{{ row.naziv_bolesti }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="simptomi">
-        <mat-header-cell *matHeaderCellDef >Simptomi</mat-header-cell>
-        <mat-cell *matCellDef="let row" >
-            {{ row.simptomi }}</mat-cell>
+      <mat-header-cell *matHeaderCellDef>Simptomi</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <ul>
+          <li *ngFor="let simptom of row.simptomi">{{simptom}}</li>
+        </ul>
+      </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row
-      style="cursor: pointer;"
-      *matRowDef="let row; columns: displayedColumns">
-   </mat-row>  
+    <mat-row style="cursor: pointer;" *matRowDef="let row; columns: displayedColumns">
+    </mat-row>
   </mat-table>
 </div>
 
 <div mat-dialog-actions>
-    <button id="buttonPosition" mat-button (click)="zatvori()">
-        Zatvori
-    </button>
+  <button id="buttonPosition" mat-button (click)="zatvori()">
+    Zatvori
+  </button>
 </div>
