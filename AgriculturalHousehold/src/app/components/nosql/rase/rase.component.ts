@@ -3,7 +3,7 @@ import { Svinja } from './../../../models/svinja';
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
-import { RasaKategorijaService } from 'src/app/services/rasa_ketegorija.service';
+import { RasaKategorijaService } from 'src/app/services/rasa_kategorija.service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
@@ -53,7 +53,6 @@ export class RaseComponent implements OnInit {
   loadSvinjePoRasi(naziv_rase: string): void {
     this.subscription = this.svinjaService.getSvinjePoRasi(naziv_rase).subscribe(data => {
       this.svinjePoRasi = data;
-      console.log('cao');
      },
      (error:Error) => {
        console.log(error.name + ' ' + error.message);

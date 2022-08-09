@@ -21,7 +21,6 @@ export class SvinjaComponent implements OnInit, OnDestroy {
   displayedColumns = ['tetovir_broj_svinje', 'oznaka_legla', 'rasa', 'kategorija', 'aktuelni_veterinarski_broj', 'actions'];
   dataSource!: MatTableDataSource<SvinjaComponent>;
   subscription!: Subscription;
-  selektovanaRasa!: string;
   selektovanaSvinjaVakcine: Svinja;
   selektovanaSvinjaPregledi: Svinja;
 
@@ -60,12 +59,6 @@ export class SvinjaComponent implements OnInit, OnDestroy {
     this.dataSource.filter = filterValue;
   }
 
-  selektujRasu(rasa: string) {
-    this.selektovanaSvinjaPregledi = null;
-    this.selektovanaSvinjaPregledi = null;
-    this.selektovanaRasa = rasa;
-  }
-
   prikaziLeglo(oznaka_legla: string) {
     const dialogRef = this.dialog.open(LegloComponent);
     dialogRef.componentInstance.oznakaLegla = oznaka_legla;
@@ -83,13 +76,11 @@ export class SvinjaComponent implements OnInit, OnDestroy {
 
   readVakcine(svinja: Svinja) {
     this.selektovanaSvinjaPregledi = null;
-    this.selektovanaRasa = null;
     this.selektovanaSvinjaVakcine = svinja;
   }
 
   readPregledi(svinja: Svinja) {
     this.selektovanaSvinjaVakcine = null;
-    this.selektovanaRasa = null;
     this.selektovanaSvinjaPregledi = svinja;
   }
 

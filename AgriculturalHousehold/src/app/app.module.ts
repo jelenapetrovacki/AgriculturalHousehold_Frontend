@@ -42,7 +42,6 @@ import { FakturisaneStavkeDialogComponent } from './components/dialogs/fakturisa
 import { DeleteFakturaDialogComponent } from './components/dialogs/delete-faktura-dialog/delete-faktura-dialog.component';
 import { SvinjaComponent } from './components/nosql/svinja/svinja.component';
 import { TerapijePoDanuComponent } from './components/nosql/terapije-po-danu/terapije-po-danu.component';
-import { SvinjePoRasiComponent } from './components/nosql/svinje-po-rasi/svinje-po-rasi.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { LegloComponent } from './components/nosql/dialogs/leglo/leglo.component';
 import { ArhivaVeterinarskogBrojaComponent } from './components/nosql/arhiva-veterinarskog-broja/arhiva-veterinarskog-broja.component';
@@ -77,7 +76,6 @@ import { KategorijeComponent } from './components/nosql/kategorije/kategorije.co
     DeleteFakturaDialogComponent,
     SvinjaComponent,
     TerapijePoDanuComponent,
-    SvinjePoRasiComponent,
     LegloComponent,
     ArhivaVeterinarskogBrojaComponent,
     KategorijePoSvinjiComponent,

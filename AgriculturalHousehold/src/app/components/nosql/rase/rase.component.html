@@ -3,9 +3,21 @@
 </mat-toolbar>
 
 <table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8">
-  <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
-    <th mat-header-cell *matHeaderCellDef> {{column}} </th>
-    <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+  <ng-container matColumnDef="naziv_rase" >
+    <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Naziv rase </th>
+    <td mat-cell *matCellDef="let element"> {{element['naziv_rase']}} </td>
+  </ng-container>
+  <ng-container matColumnDef="opis">
+    <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Opis </th>
+    <td mat-cell *matCellDef="let element"> {{element['opis']}} </td>
+  </ng-container>
+  <ng-container matColumnDef="alternativno_ime">
+    <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Alternativno ime </th>
+    <td mat-cell *matCellDef="let element"> {{element['alternativno_ime']}} </td>
+  </ng-container>
+  <ng-container matColumnDef="zemlja_porekla">
+    <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Zemlja porekla </th>
+    <td mat-cell *matCellDef="let element"> {{element['zemlja_porekla']}} </td>
   </ng-container>
   <ng-container matColumnDef="expand">
     <th mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</th>
@@ -23,18 +35,18 @@
     <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplayWithExpand.length">
       <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
         <div class="example-element-diagram">
-          <table>
+          <table class="mat-elevation-z8 demo-table">
             <tr>
-              <th>Tet broj</th>
+              <th>Tetovir broj</th>
               <th>Oznaka legla</th>
-              <th>Kategorija</th>
-              <th>Vet br</th>
+              <th>Kategorija svinje</th>
+              <th>Aktuelni veterinarski broj svinje</th>
             </tr>
             <tr *ngFor="let svinja of svinjePoRasi">
-              <th>{{svinja.tetovir_broj_svinje}} </th>
-              <th> {{svinja.oznaka_legla}}</th>
-              <th>{{svinja.kategorija}}</th>
-              <th>{{svinja.aktuelni_veterinarski_broj}}</th>
+              <td>{{svinja.tetovir_broj_svinje}}</td>
+              <td> {{svinja.oznaka_legla}}</td>
+              <td>{{svinja.kategorija}}</td>
+              <td>{{svinja.aktuelni_veterinarski_broj}}</td>
             </tr>
           </table>
         </div>

@@ -18,8 +18,7 @@
     </ng-container>
     <ng-container matColumnDef="rasa">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Rasa</mat-header-cell>
-      <mat-cell matTooltip="Prikaži svinje koje pripadaju {{ row.rasa }} rasi" (click)="selektujRasu(row.rasa)"
-        *matCellDef="let row">{{ row.rasa }}</mat-cell>
+      <mat-cell *matCellDef="let row">{{ row.rasa }}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="kategorija">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Kategorija</mat-header-cell>
@@ -58,13 +57,10 @@
   </mat-paginator>
 
   <div class="container mat-elevation-z8">
-    <app-svinje-po-rasi *ngIf="selektovanaRasa && !selektovanaSvinjaPregledi && !selektovanaSvinjaVakcine"
-      [selektovanaRasa]="selektovanaRasa">
-    </app-svinje-po-rasi>
-    <app-vakcine *ngIf="selektovanaSvinjaVakcine && !selektovanaSvinjaPregledi && !selektovanaRasa"
+    <app-vakcine *ngIf="selektovanaSvinjaVakcine && !selektovanaSvinjaPregledi"
       [selektovanaSvinjaVakcine]="selektovanaSvinjaVakcine">
     </app-vakcine>
-    <app-pregledi *ngIf="selektovanaSvinjaPregledi && !selektovanaSvinjaVakcine && !selektovanaRasa"
+    <app-pregledi *ngIf="selektovanaSvinjaPregledi && !selektovanaSvinjaVakcine"
       [selektovanaSvinjaPregledi]="selektovanaSvinjaPregledi">
     </app-pregledi>
   </div>
