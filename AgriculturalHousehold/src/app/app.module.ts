@@ -54,6 +54,8 @@ import { BolestiPoPregleduDialogComponent } from './components/nosql/dialogs/bol
 import { DodajVakcinuDialogComponent } from './components/nosql/dialogs/dodaj-vakcinu-dialog/dodaj-vakcinu-dialog.component';
 import { RaseComponent } from './components/nosql/rase/rase.component';
 import { KategorijeComponent } from './components/nosql/kategorije/kategorije.component';
+import { ChoiceDialogComponent } from './components/nosql/dialogs/choice-dialog/choice-dialog.component';
+import { UpdateKategorijeComponent } from './components/nosql/dialogs/update-kategorije/update-kategorije.component';
 
 
 @NgModule({
@@ -86,7 +88,9 @@ import { KategorijeComponent } from './components/nosql/kategorije/kategorije.co
     TerapijePoPregleduDialogComponent,
     DodajVakcinuDialogComponent,
     RaseComponent,
-    KategorijeComponent
+    KategorijeComponent,
+    ChoiceDialogComponent,
+    UpdateKategorijeComponent
   ],
   imports: [
     BrowserModule,

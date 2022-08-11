@@ -1,0 +1,27 @@
+<div class="container">
+    <h3 mat-dialog-title>Izmena kategorije svinje: </h3>
+    <form class="mat-dialog-content" #formControl="ngForm">
+        <div class="form">
+            <mat-form-field>
+                <mat-label>Kategorija</mat-label>
+                <select matNativeControl required [(ngModel)]="izabranaKategorija" name="izabranaKategorija">
+                  <option value="Prasad">Prasad</option>
+                  <option value="Nerastici">Nerastici</option>
+                  <option value="Tovne svinje">Tovne svinje</option>
+                </select>
+            </mat-form-field>
+        </div>
+        <div mat-dialog-actions>
+            <button mat-button type="submit" [mat-dialog-close]="1" (click)="izmeniKategorijuSvinje()"
+                [disabled]="!formControl.valid">
+                Sačuvaj
+            </button>
+
+            <button mat-button (click)="cancel()">
+                Poništi
+            </button>
+        </div>
+
+    </form>
+
+</div>

@@ -37,7 +37,8 @@
       <mat-header-cell *matHeaderCellDef>
       </mat-header-cell>
       <mat-cell *matCellDef="let row; let i = index">
-        <button mat-icon-button color="primary" (click)="updateVeterinarskiBroj(row)">
+        <!--(click)="updateVeterinarskiBroj(row)"-->
+        <button mat-icon-button color="primary" (click)="openDialog(row)">
           <mat-icon aria-label="Edit">edit</mat-icon>
         </button>
         <button mat-button color="primary" (click)="readVakcine(row)">

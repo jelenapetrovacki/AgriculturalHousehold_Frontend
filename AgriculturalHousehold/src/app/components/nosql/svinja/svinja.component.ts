@@ -1,3 +1,4 @@
+import { ChoiceDialogComponent } from './../dialogs/choice-dialog/choice-dialog.component';
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
@@ -28,7 +29,8 @@ export class SvinjaComponent implements OnInit, OnDestroy {
   @ViewChild(MatPaginator, {static:false}) paginator!: MatPaginator;
 
   constructor(private svinjaService: SvinjaService,
-    private dialog: MatDialog) { }
+    private dialog: MatDialog,
+    public dialogChoice: MatDialog) { }
 
 
   ngOnInit(): void {
@@ -74,6 +76,10 @@ export class SvinjaComponent implements OnInit, OnDestroy {
     dialogRef.componentInstance.selektovanaSvinja = svinja;
   }
 
+  openDialog(svinja: Svinja): void {
+    this.dialog.open(ChoiceDialogComponent).componentInstance.selektovanaSvinja = svinja;
+  }
+
   readVakcine(svinja: Svinja) {
     this.selektovanaSvinjaPregledi = null;
     this.selektovanaSvinjaVakcine = svinja;
@@ -84,8 +90,5 @@ export class SvinjaComponent implements OnInit, OnDestroy {
     this.selektovanaSvinjaPregledi = svinja;
   }
 
-  updateVeterinarskiBroj(svinja: Svinja) {
-    const dialogRef = this.dialog.open(ArhivaVetBrDialogComponent);
-    dialogRef.componentInstance.selektovanaSvinja = svinja;
-  }
+
 }

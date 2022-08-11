@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { SVINJA_URL } from '../app.constants';
+import { Svinja } from '../models/svinja';
 
 @Injectable({
   providedIn: 'root'
@@ -21,5 +22,9 @@ export class SvinjaService {
 
   public getSvinjePoKategoriji(sifraKategorije: string): Observable<any> {
     return this.httpClient.get(`${SVINJE_KATEGORIJA_URL}/${sifraKategorije}`);
+  }
+
+  public putSvinjePoKategoriji(svinja: Svinja, staraKategorija: string): Observable<any> {
+    return this.httpClient.put(`${SVINJA_URL}/${staraKategorija}`, svinja);
   }
 }
